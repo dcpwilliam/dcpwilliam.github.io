@@ -1,0 +1,56 @@
+{
+  "name": "ebi-investment",
+  "version": "0.1.0",
+  "description": "EBI 循证投资 — Evidence Based Investment, distributed investment intelligence platform",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "python3 -m http.server 8080 --directory src",
+    "server": "cd server && python3 -m uvicorn main:app --reload --port 8000",
+    "electron": "electron .",
+    "build:mac": "electron-builder --mac",
+    "build:dmg": "bash build-dmg.sh",
+    "build:web": "echo 'Web app is in src/ - deploy to any static host'"
+  },
+  "build": {
+    "appId": "com.ebiinvestment.app",
+    "productName": "EBI 循证投资",
+    "mac": {
+      "category": "public.app-category.finance",
+      "icon": "src/assets/icons/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "electron/entitlements.mac.plist",
+      "entitlementsInherit": "electron/entitlements.mac.plist"
+    },
+    "dmg": {
+      "title": "EBI 循证投资 ${version}",
+      "contents": [
+        { "x": 130, "y": 220, "type": "file" },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ],
+      "window": { "width": 540, "height": 380 }
+    },
+    "files": [
+      "src/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcpwilliam/ebi-investment"
+  }
+}
