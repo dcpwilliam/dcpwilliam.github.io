@@ -119,6 +119,93 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
         }
+        .loading {
+            text-align: center;
+            padding: 100px;
+            font-size: 18px;
+            color: #8899aa;
+        }
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #1a1f2e, #0f1419);
+            border: 1px solid #2a3441;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+        .stat-card .label {
+            font-size: 14px;
+            color: #8899aa;
+            margin-bottom: 8px;
+        }
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .factor-section {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a3441;
+        }
+        .factor-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1f2e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .factor-table th {
+            background: #0f1419;
+            padding: 16px 12px;
+            text-align: left;
+            font-size: 14px;
+            color: #00d4ff;
+            border-bottom: 2px solid #2a3441;
+        }
+        .factor-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #2a3441;
+            font-size: 14px;
+        }
+        .factor-table tr:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+        .industry-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+        }
+        .up { color: #00d4aa; }
+        .down { color: #ff6b6b; }
     </style>
 </head>
 <body>
@@ -140,62 +227,254 @@
         </div>
     </header>
     
-    <main class="main-content">
-        <div class="coming-soon">
-            <div class="coming-soon-icon">🔬</div>
-            <h2 id="page-subtitle">因子探究</h2>
-            <p id="page-desc">
-                深入分析各类投资因子<br>
-                包括价值因子、动量因子、质量因子等<br>
-                发现市场规律与投资机会
-            </p>
-            <a href="index.html" class="back-link" id="back-link">← 返回首页</a>
-        </div>
+    <main class="main-content" id="main-content">
+        <div class="loading" id="loading">加载数据</div>
     </main>
 
     <script>
         const translations = {
             zh: {
+                loading: '加载数据',
                 pageTitle: '🔬 因子探究',
-                pageSubtitle: '因子探究',
-                pageDesc: '深入分析各类投资因子\n包括价值因子、动量因子、质量因子等\n发现市场规律与投资机会',
                 backLink: '← 返回首页',
                 navHome: '首页',
                 navMap: '市场雷达',
                 navSimback: '策略模拟',
                 navMe: '个人信息',
-                navFactor: '因子探究'
+                navFactor: '因子探究',
+                totalStocks: '股票总数',
+                avgPE: '平均市盈率',
+                avgPB: '平均市净率',
+                avgROE: '平均净资产收益率',
+                factorAnalysis: '因子分析',
+                stockCode: '代码',
+                stockName: '名称',
+                industry: '行业',
+                price: '价格',
+                pe: '市盈率',
+                pb: '市净率',
+                roe: '净资产收益率',
+                marketCap: '市值',
+                change: '涨跌幅',
+                rankByPE: '按市盈率排序',
+                rankByPB: '按市净率排序',
+                rankByROE: '按ROE排序'
             },
             ja: {
+                loading: 'データ読み込み中',
                 pageTitle: '🔬 ファクター分析',
-                pageSubtitle: 'ファクター分析',
-                pageDesc: '各種投資ファクターを深く分析します\nバリューファクター、モメンタムファクター、クオリティファクターなど\n市場の法則と投資機会を発見します',
                 backLink: '← ホームに戻る',
                 navHome: 'ホーム',
                 navMap: '市場レーダー',
                 navSimback: '戦略シミュレーション',
                 navMe: '個人情報',
-                navFactor: 'ファクター分析'
+                navFactor: 'ファクター分析',
+                totalStocks: '株式総数',
+                avgPE: '平均PER',
+                avgPB: '平均PBR',
+                avgROE: '平均ROE',
+                factorAnalysis: 'ファクター分析',
+                stockCode: 'コード',
+                stockName: '名前',
+                industry: '業種',
+                price: '価格',
+                pe: 'PER',
+                pb: 'PBR',
+                roe: 'ROE',
+                marketCap: '時価総額',
+                change: '変動率',
+                rankByPE: 'PER順',
+                rankByPB: 'PBR順',
+                rankByROE: 'ROE順'
             },
             en: {
+                loading: 'Loading',
                 pageTitle: '🔬 Factor Analysis',
-                pageSubtitle: 'Factor Analysis',
-                pageDesc: 'Deeply analyze various investment factors\nIncluding value, momentum, quality factors\nDiscover market patterns and opportunities',
                 backLink: '← Back to Home',
                 navHome: 'Home',
                 navMap: 'Market Radar',
                 navSimback: 'Strategy Simulation',
                 navMe: 'Profile',
-                navFactor: 'Factor Analysis'
+                navFactor: 'Factor Analysis',
+                totalStocks: 'Total Stocks',
+                avgPE: 'Avg PE',
+                avgPB: 'Avg PB',
+                avgROE: 'Avg ROE',
+                factorAnalysis: 'Factor Analysis',
+                stockCode: 'Code',
+                stockName: 'Name',
+                industry: 'Industry',
+                price: 'Price',
+                pe: 'PE Ratio',
+                pb: 'PB Ratio',
+                roe: 'ROE',
+                marketCap: 'Market Cap',
+                change: 'Change',
+                rankByPE: 'Sort by PE',
+                rankByPB: 'Sort by PB',
+                rankByROE: 'Sort by ROE'
             }
         };
 
+        let currentLang = 'zh';
+        let apiData = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('https://console.authing.cn/webhook/2fd05435-b258-44f7-b5ae-760565ff646a');
+                const result = await response.json();
+                
+                if (result.data && result.data.output && result.data.output.data) {
+                    const content = result.data.output.data.data.content;
+                    apiData = parseApiData(content);
+                    renderFactorPage();
+                }
+            } catch (error) {
+                console.error('Failed to load data:', error);
+                document.getElementById('main-content').innerHTML = '<div class="loading">数据加载失败，请刷新页面</div>';
+            }
+        }
+
+        function parseApiData(content) {
+            const industries = [];
+            const themes = [];
+            const stocks = [];
+
+            if (content.industries) {
+                content.industries.forEach(ind => {
+                    industries.push({
+                        name: ind.name || ind.name_en || '',
+                        code: ind.code || '',
+                        stockCount: ind.stock_count || ind.stockCount || 0
+                    });
+                });
+            }
+
+            if (content.themes) {
+                content.themes.forEach(theme => {
+                    themes.push({
+                        name: theme.name || theme.name_en || '',
+                        code: theme.code || '',
+                        stockCount: theme.stock_count || theme.stockCount || 0
+                    });
+                });
+            }
+
+            if (content.stocks) {
+                content.stocks.forEach(stock => {
+                    stocks.push({
+                        code: stock.code || stock.scode || '',
+                        name: stock.name || stock.sname || '',
+                        industry: stock.industry || '',
+                        price: parseFloat(stock.price) || 0,
+                        pe: parseFloat(stock.pe) || 0,
+                        pb: parseFloat(stock.pb) || 0,
+                        roe: parseFloat(stock.roe) || 0,
+                        marketCap: parseFloat(stock.market_cap || stock.marketCap) || 0,
+                        change: parseFloat(stock.change) || 0
+                    });
+                });
+            }
+
+            return { industries, themes, stocks };
+        }
+
+        function renderFactorPage() {
+            const t = translations[currentLang];
+            const stats = calculateStats();
+            
+            let html = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="label">${t.totalStocks}</div>
+                        <div class="value">${stats.totalStocks}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">${t.avgPE}</div>
+                        <div class="value">${stats.avgPE.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">${t.avgPB}</div>
+                        <div class="value">${stats.avgPB.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">${t.avgROE}</div>
+                        <div class="value">${stats.avgROE.toFixed(2)}%</div>
+                    </div>
+                </div>
+                
+                <div class="factor-section">
+                    <h3 class="section-title">${t.factorAnalysis}</h3>
+                    <table class="factor-table">
+                        <thead>
+                            <tr>
+                                <th>${t.stockCode}</th>
+                                <th>${t.stockName}</th>
+                                <th>${t.industry}</th>
+                                <th>${t.price}</th>
+                                <th>${t.pe}</th>
+                                <th>${t.pb}</th>
+                                <th>${t.roe}</th>
+                                <th>${t.marketCap}</th>
+                                <th>${t.change}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            apiData.stocks.slice(0, 50).forEach(stock => {
+                const changeClass = stock.change >= 0 ? 'up' : 'down';
+                const changeSign = stock.change >= 0 ? '+' : '';
+                html += `
+                            <tr>
+                                <td>${stock.code}</td>
+                                <td>${stock.name}</td>
+                                <td><span class="industry-tag">${stock.industry}</span></td>
+                                <td>¥${stock.price.toFixed(2)}</td>
+                                <td>${stock.pe > 0 ? stock.pe.toFixed(2) : '-'}</td>
+                                <td>${stock.pb > 0 ? stock.pb.toFixed(2) : '-'}</td>
+                                <td>${stock.roe > 0 ? stock.roe.toFixed(2) + '%' : '-'}</td>
+                                <td>${(stock.marketCap / 100000000).toFixed(2)}亿</td>
+                                <td class="${changeClass}">${changeSign}${stock.change.toFixed(2)}%</td>
+                            </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+                <div style="padding: 30px; text-align: center;">
+                    <a href="index.html" class="back-link">${t.backLink}</a>
+                </div>
+            `;
+
+            document.getElementById('main-content').innerHTML = html;
+        }
+
+        function calculateStats() {
+            if (!apiData || !apiData.stocks.length) {
+                return { totalStocks: 0, avgPE: 0, avgPB: 0, avgROE: 0 };
+            }
+
+            const stocks = apiData.stocks;
+            const validPE = stocks.filter(s => s.pe > 0);
+            const validPB = stocks.filter(s => s.pb > 0);
+            const validROE = stocks.filter(s => s.roe > 0);
+
+            return {
+                totalStocks: stocks.length,
+                avgPE: validPE.length ? validPE.reduce((sum, s) => sum + s.pe, 0) / validPE.length : 0,
+                avgPB: validPB.length ? validPB.reduce((sum, s) => sum + s.pb, 0) / validPB.length : 0,
+                avgROE: validROE.length ? validROE.reduce((sum, s) => sum + s.roe, 0) / validROE.length : 0
+            };
+        }
+
         function switchLang(lang) {
+            currentLang = lang;
             const t = translations[lang];
+            
             document.getElementById('page-title').textContent = t.pageTitle;
-            document.getElementById('page-subtitle').textContent = t.pageSubtitle;
-            document.getElementById('page-desc').innerHTML = t.pageDesc.replace(/\n/g, '<br>');
-            document.getElementById('back-link').textContent = t.backLink;
             document.getElementById('nav-home').textContent = t.navHome;
             document.getElementById('nav-map').textContent = t.navMap;
             document.getElementById('nav-simback').textContent = t.navSimback;
@@ -208,11 +487,17 @@
             document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
             
             localStorage.setItem('ebi-lang', lang);
+            
+            if (apiData) {
+                renderFactorPage();
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('load', async () => {
             const savedLang = localStorage.getItem('ebi-lang') || 'zh';
+            currentLang = savedLang;
             switchLang(savedLang);
+            await loadData();
         });
     </script>
 </body>
