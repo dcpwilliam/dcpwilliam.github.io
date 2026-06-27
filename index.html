@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBI 循证投资平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #0a0e1a;
+            color: #e0e6ed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+            padding: 20px 30px;
+            border-bottom: 1px solid #2a3441;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            color: #8899aa;
+            margin-top: 4px;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .welcome-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #00d4ff, #7b61ff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .welcome-desc {
+            font-size: 16px;
+            color: #8899aa;
+            max-width: 500px;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .module-card {
+            background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+            border: 1px solid #2a3441;
+            border-radius: 16px;
+            padding: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .module-card:hover {
+            border-color: var(--card-color);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px var(--card-color);
+        }
+        
+        .module-card:hover::before {
+            opacity: 1;
+        }
+        
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .module-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .module-desc {
+            font-size: 14px;
+            color: #8899aa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .module-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--card-color);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .module-card:hover .module-arrow {
+            background: var(--card-color);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+        
+        .module-card:nth-child(1) {
+            --card-color: #00d4ff;
+        }
+        
+        .module-card:nth-child(2) {
+            --card-color: #7b61ff;
+        }
+        
+        .module-card:nth-child(3) {
+            --card-color: #ff6b6b;
+        }
+        
+        .module-card:nth-child(4) {
+            --card-color: #00d4aa;
+        }
+        
+        .footer {
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #2a3441;
+            background: #0f1419;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #5a6673;
+        }
+        
+        .footer-text a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>EBI 循证投资</h1>
+            <p class="header-subtitle">Evidence-Based Investing Platform</p>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2 class="welcome-title">欢迎使用 EBI 平台</h2>
+            <p class="welcome-desc">基于数据和策略的循证投资分析工具，助您做出更明智的投资决策</p>
+        </section>
+        
+        <div class="modules-grid">
+            <a href="factor.html" class="module-card">
+                <div class="module-icon">🔬</div>
+                <h3 class="module-title">因子探究</h3>
+                <p class="module-desc">深入分析各类投资因子，发现市场规律与投资机会，构建科学的投资框架</p>
+                <div class="module-arrow">→</div>
+            </a>
+            
+            <a href="map.html" class="module-card">
+                <div class="module-icon">📡</div>
+                <h3 class="module-title">市场雷达</h3>
+                <p class="module-desc">多维度可视化股票市场，实时监控行业动态，把握市场脉搏与热点轮动</p>
+                <div class="module-arrow">→</div>
+            </a>
+            
+            <a href="simback.html" class="module-card">
+                <div class="module-icon">🎮</div>
+                <h3 class="module-title">策略模拟</h3>
+                <p class="module-desc">模拟交易与回测验证，在真实环境中检验策略有效性，降低实盘风险</p>
+                <div class="module-arrow">→</div>
+            </a>
+            
+            <a href="me.html" class="module-card">
+                <div class="module-icon">👤</div>
+                <h3 class="module-title">个人信息</h3>
+                <p class="module-desc">管理个人资料与偏好设置，查看投资组合表现，追踪成长轨迹</p>
+                <div class="module-arrow">→</div>
+            </a>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p class="footer-text">
+            © 2024 EBI 循证投资平台 | 
+            <a href="https://github.com/dcpwilliam" target="_blank">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>

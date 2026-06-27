@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息 - EBI 循证投资</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #0a0e1a;
+            color: #e0e6ed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+            padding: 20px 30px;
+            border-bottom: 1px solid #2a3441;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .header-links {
+            display: flex;
+            gap: 20px;
+        }
+        .header-links a {
+            color: #8899aa;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .header-links a:hover {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+        .header-links a.active {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.15);
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .coming-soon {
+            text-align: center;
+            max-width: 500px;
+        }
+        .coming-soon-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+        .coming-soon h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .coming-soon p {
+            font-size: 16px;
+            color: #8899aa;
+            line-height: 1.8;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #00d4ff, #7b61ff);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>👤 个人信息</h1>
+        <nav class="header-links">
+            <a href="index.html">首页</a>
+            <a href="map.html">市场雷达</a>
+            <a href="simback.html">策略模拟</a>
+            <a href="me.html" class="active">个人信息</a>
+            <a href="factor.html">因子探究</a>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <div class="coming-soon">
+            <div class="coming-soon-icon">👤</div>
+            <h2>个人信息</h2>
+            <p>
+                管理个人资料与偏好设置<br>
+                查看投资组合表现<br>
+                追踪成长轨迹与学习历程
+            </p>
+            <a href="index.html" class="back-link">← 返回首页</a>
+        </div>
+    </main>
+</body>
+</html>
