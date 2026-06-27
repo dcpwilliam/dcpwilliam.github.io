@@ -1,0 +1,167 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.search-bar {
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  background: #1a1f2e;
+  border: 1px solid #2a3441;
+  border-radius: 12rpx;
+  padding: 24rpx 30rpx;
+  font-size: 28rpx;
+  color: #e0e6ed;
+}
+
+.placeholder {
+  color: #5a6673;
+}
+
+.filter-section {
+  margin-bottom: 20rpx;
+}
+
+.filter-scroll {
+  white-space: nowrap;
+}
+
+.filter-tags {
+  display: inline-flex;
+  gap: 20rpx;
+  padding: 10rpx 0;
+}
+
+.filter-tag {
+  padding: 16rpx 32rpx;
+  background: #1a1f2e;
+  border: 1px solid #2a3441;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #8899aa;
+}
+
+.filter-tag.active {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+}
+
+.market-summary {
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+  border: 1px solid #2a3441;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  font-size: 24rpx;
+  color: #8899aa;
+  margin-bottom: 10rpx;
+}
+
+.summary-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #e0e6ed;
+}
+
+.summary-value.up {
+  color: #00d4aa;
+}
+
+.summary-value.down {
+  color: #ff6b6b;
+}
+
+.stocks-list {
+  background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+  border: 1px solid #2a3441;
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1px solid #2a3441;
+}
+
+.list-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.list-count {
+  font-size: 24rpx;
+  color: #8899aa;
+}
+
+.stock-item {
+  padding: 24rpx 0;
+  border-bottom: 1px solid #2a3441;
+}
+
+.stock-info {
+  margin-bottom: 10rpx;
+}
+
+.stock-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #8899aa;
+}
+
+.stock-price {
+  display: flex;
+  align-items: baseline;
+  gap: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.price {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.change {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.change.up {
+  color: #00d4aa;
+}
+
+.change.down {
+  color: #ff6b6b;
+}
+
+.stock-meta {
+  display: flex;
+  gap: 30rpx;
+}
+
+.meta-item {
+  font-size: 24rpx;
+  color: #8899aa;
+}

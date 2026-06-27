@@ -1,0 +1,89 @@
+page {
+  background-color: #0a0e1a;
+  color: #e0e6ed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+.card {
+  background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+  border: 1px solid #2a3441;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #8899aa;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00d4ff, #7b61ff);
+  color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #00d4ff, #7b61ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-green {
+  color: #00d4aa;
+}
+
+.text-red {
+  color: #ff6b6b;
+}
+
+.text-yellow {
+  color: #ffd93d;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-20 {
+  gap: 20rpx;
+}
+
+.gap-30 {
+  gap: 30rpx;
+}

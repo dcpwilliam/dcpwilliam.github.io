@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="header">
+    <view class="header-content">
+      <text class="app-title">{{t.appTitle}}</text>
+      <text class="app-subtitle">{{t.appSubtitle}}</text>
+    </view>
+    <view class="lang-switcher">
+      <view class="lang-btn {{lang === 'zh' ? 'active' : ''}}" bindtap="switchLang" data-lang="zh">{{t.langChinese}}</view>
+      <view class="lang-btn {{lang === 'ja' ? 'active' : ''}}" bindtap="switchLang" data-lang="ja">{{t.langJapanese}}</view>
+      <view class="lang-btn {{lang === 'en' ? 'active' : ''}}" bindtap="switchLang" data-lang="en">{{t.langEnglish}}</view>
+    </view>
+  </view>
+
+  <view class="welcome-section">
+    <text class="welcome-title">{{t.welcomeTitle}}</text>
+    <text class="welcome-desc">{{t.welcomeDesc}}</text>
+  </view>
+
+  <view class="modules-grid">
+    <view class="module-card" bindtap="goToFactor">
+      <view class="module-icon bg-blue">
+        <text class="icon-text">🔬</text>
+      </view>
+      <text class="module-title">{{t.moduleFactor}}</text>
+      <text class="module-desc">{{t.moduleFactorDesc}}</text>
+      <view class="module-arrow">→</view>
+    </view>
+
+    <view class="module-card" bindtap="goToMap">
+      <view class="module-icon bg-purple">
+        <text class="icon-text">📡</text>
+      </view>
+      <text class="module-title">{{t.moduleMap}}</text>
+      <text class="module-desc">{{t.moduleMapDesc}}</text>
+      <view class="module-arrow">→</view>
+    </view>
+
+    <view class="module-card" bindtap="goToSimback">
+      <view class="module-icon bg-red">
+        <text class="icon-text">🎮</text>
+      </view>
+      <text class="module-title">{{t.moduleSimback}}</text>
+      <text class="module-desc">{{t.moduleSimbackDesc}}</text>
+      <view class="module-arrow">→</view>
+    </view>
+
+    <view class="module-card" bindtap="goToMe">
+      <view class="module-icon bg-green">
+        <text class="icon-text">👤</text>
+      </view>
+      <text class="module-title">{{t.moduleMe}}</text>
+      <text class="module-desc">{{t.moduleMeDesc}}</text>
+      <view class="module-arrow">→</view>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <text class="section-title">{{t.statsTitle}}</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">40</text>
+        <text class="stat-label">{{t.statStocks}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">8</text>
+        <text class="stat-label">{{t.statIndustries}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">6</text>
+        <text class="stat-label">{{t.statThemes}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">+12.5%</text>
+        <text class="stat-label">{{t.statAvgReturn}}</text>
+      </view>
+    </view>
+  </view>
+</view>

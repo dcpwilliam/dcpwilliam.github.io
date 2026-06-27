@@ -62,6 +62,33 @@
             background: rgba(0, 212, 255, 0.15);
         }
         
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #2a3441;
+            background: rgba(255, 255, 255, 0.05);
+            color: #8899aa;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            border-color: transparent;
+            color: #ffffff;
+        }
+        
         .controls {
             display: flex;
             gap: 20px;
@@ -363,14 +390,19 @@
     </div>
     
     <div class="header">
-        <h1>📊 股票多维度分析引擎</h1>
+        <h1 id="page-title">📊 股票多维度分析引擎</h1>
         <nav class="header-links">
-            <a href="index.html">首页</a>
-            <a href="map.html" class="active">市场雷达</a>
-            <a href="simback.html">策略模拟</a>
-            <a href="me.html">个人信息</a>
-            <a href="factor.html">因子探究</a>
+            <a href="index.html" id="nav-home">首页</a>
+            <a href="map.html" class="active" id="nav-map">市场雷达</a>
+            <a href="simback.html" id="nav-simback">策略模拟</a>
+            <a href="me.html" id="nav-me">个人信息</a>
+            <a href="factor.html" id="nav-factor">因子探究</a>
         </nav>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中文</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLang('ja')">日本語</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
+        </div>
         <div class="controls">
             <div class="control-group">
                 <label>X 轴维度</label>
@@ -478,7 +510,7 @@
         let selectedIndustries = new Set();
         let myChart = null;
         
-        const dimensionLabels = {
+        let dimensionLabels = {
             pe: '市盈率 (PE)',
             pb: '市净率 (PB)',
             roe: '净资产收益率 (ROE%)',
@@ -493,18 +525,80 @@
         
         async function loadData() {
             try {
-                const response = await fetch('stock-data.json');
+                const response = await fetch('https://console.authing.cn/webhook/2fd05435-b258-44f7-b5ae-760565ff646a');
                 if (!response.ok) throw new Error('HTTP error');
-                const data = await response.json();
-                industries = data.industries;
-                themes = data.themes;
-                allData = data.stocks;
-                currentData = [...allData];
-                selectedIndustries = new Set(industries.map(i => i.name));
-                return true;
-            } catch (error) {
-                console.warn('HTTP fetch failed, trying local data...:', error);
+                const responseData = await response.json();
+                
+                if (responseData.code === 200 && responseData.data && responseData.data.output && responseData.data.output.data && responseData.data.output.data.data) {
+                    const content = responseData.data.output.data.data.content;
+                    const parsedData = parseContentData(content);
+                    if (parsedData) {
+                        industries = parsedData.industries;
+                        themes = parsedData.themes;
+                        allData = parsedData.stocks;
+                        currentData = [...allData];
+                        selectedIndustries = new Set(industries.map(i => i.name));
+                        return true;
+                    }
+                }
                 return loadLocalData();
+            } catch (error) {
+                console.warn('API fetch failed, trying local data...:', error);
+                return loadLocalData();
+            }
+        }
+        
+        function parseContentData(content) {
+            try {
+                const industriesMatch = content.match(/industries:\s*\[([\s\S]*?)\]/);
+                const themesMatch = content.match(/themes:\s*\[([\s\S]*?)\]/);
+                const stocksMatch = content.match(/stocks:\s*\[([\s\S]*?)\]/);
+                
+                if (!industriesMatch || !themesMatch || !stocksMatch) {
+                    return null;
+                }
+                
+                const industries = parseArrayData(industriesMatch[1]);
+                const themes = parseArrayData(themesMatch[1]);
+                const stocks = parseStockData(stocksMatch[1]);
+                
+                return { industries, themes, stocks };
+            } catch (e) {
+                console.error('Failed to parse content:', e);
+                return null;
+            }
+        }
+        
+        function parseArrayData(str) {
+            const items = [];
+            const regex = /\{\s*name:\s*'([^']+)',\s*color:\s*'([^']+)'\s*\}/g;
+            let match;
+            while ((match = regex.exec(str)) !== null) {
+                items.push({ name: match[1], color: match[2] });
+            }
+            return items;
+        }
+        
+        function parseStockData(str) {
+            try {
+                const cleanStr = str.replace(/\s+/g, ' ');
+                const stockObjects = cleanStr.match(/\{[^}]+\}/g);
+                const stocks = [];
+                
+                for (const obj of stockObjects) {
+                    try {
+                        const jsonStr = obj.replace(/(\w+):/g, '"$1":');
+                        const stock = JSON.parse(jsonStr);
+                        stocks.push(stock);
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                
+                return stocks;
+            } catch (e) {
+                console.error('Failed to parse stock data:', e);
+                return [];
             }
         }
 
@@ -913,6 +1007,194 @@
             
             initIndustryTags();
             initChart();
+        });
+
+        const translations = {
+            zh: {
+                pageTitle: '📊 股票多维度分析引擎',
+                navHome: '首页',
+                navMap: '市场雷达',
+                navSimback: '策略模拟',
+                navMe: '个人信息',
+                navFactor: '因子探究',
+                xAxisLabel: 'X 轴维度',
+                yAxisLabel: 'Y 轴维度',
+                bubbleSizeLabel: '圆圈大小',
+                minCapLabel: '最小市值过滤',
+                filterIndustry: '行业筛选',
+                filterOverview: '市场概览',
+                filterDetail: '选中股票详情',
+                statTotal: '股票总数',
+                statAvgChange: '平均涨幅',
+                statAvgPE: '平均PE',
+                statAvgCap: '平均市值',
+                themeIndustry: '按行业',
+                themeConcept: '按概念',
+                searchPlaceholder: '🔍 搜索股票代码或名称...',
+                clickToView: '点击图表中的圆圈查看详情',
+                dimensionLabels: {
+                    pe: '市盈率 (PE)',
+                    pb: '市净率 (PB)',
+                    roe: '净资产收益率 (ROE%)',
+                    marketCap: '市值 (亿元)',
+                    revenue: '营收 (亿元)',
+                    profit: '净利润 (亿元)',
+                    change: '年初至今涨幅 (%)',
+                    dividend: '股息率 (%)',
+                    debt: '资产负债率 (%)',
+                    volume: '成交量'
+                },
+                bubbleOptions: ['市值', '营收', '净利润', '成交量', '市盈率']
+            },
+            ja: {
+                pageTitle: '📊 株式多次元分析エンジン',
+                navHome: 'ホーム',
+                navMap: '市場レーダー',
+                navSimback: '戦略シミュレーション',
+                navMe: '個人情報',
+                navFactor: 'ファクター分析',
+                xAxisLabel: 'X軸次元',
+                yAxisLabel: 'Y軸次元',
+                bubbleSizeLabel: '円のサイズ',
+                minCapLabel: '最小時価総額フィルター',
+                filterIndustry: '業界フィルター',
+                filterOverview: '市場概要',
+                filterDetail: '選択株式詳細',
+                statTotal: '株式総数',
+                statAvgChange: '平均騰落率',
+                statAvgPE: '平均PER',
+                statAvgCap: '平均時価総額',
+                themeIndustry: '業界別',
+                themeConcept: 'コンセプト別',
+                searchPlaceholder: '🔍 株式コードまたは名称を検索...',
+                clickToView: 'グラフの円をクリックして詳細を表示',
+                dimensionLabels: {
+                    pe: 'PER',
+                    pb: 'PBR',
+                    roe: 'ROE (%)',
+                    marketCap: '時価総額 (億円)',
+                    revenue: '売上高 (億円)',
+                    profit: '純利益 (億円)',
+                    change: '年初来騰落率 (%)',
+                    dividend: '配当率 (%)',
+                    debt: '資産負債率 (%)',
+                    volume: '出来高'
+                },
+                bubbleOptions: ['時価総額', '売上高', '純利益', '出来高', 'PER']
+            },
+            en: {
+                pageTitle: '📊 Stock Multi-dimensional Analysis Engine',
+                navHome: 'Home',
+                navMap: 'Market Radar',
+                navSimback: 'Strategy Simulation',
+                navMe: 'Profile',
+                navFactor: 'Factor Analysis',
+                xAxisLabel: 'X Axis Dimension',
+                yAxisLabel: 'Y Axis Dimension',
+                bubbleSizeLabel: 'Bubble Size',
+                minCapLabel: 'Min Market Cap Filter',
+                filterIndustry: 'Industry Filter',
+                filterOverview: 'Market Overview',
+                filterDetail: 'Selected Stock Detail',
+                statTotal: 'Total Stocks',
+                statAvgChange: 'Avg Change',
+                statAvgPE: 'Avg PE',
+                statAvgCap: 'Avg Market Cap',
+                themeIndustry: 'By Industry',
+                themeConcept: 'By Theme',
+                searchPlaceholder: '🔍 Search stock code or name...',
+                clickToView: 'Click bubble to view details',
+                dimensionLabels: {
+                    pe: 'PE Ratio',
+                    pb: 'PB Ratio',
+                    roe: 'ROE (%)',
+                    marketCap: 'Market Cap (B)',
+                    revenue: 'Revenue (B)',
+                    profit: 'Net Profit (B)',
+                    change: 'YTD Change (%)',
+                    dividend: 'Dividend Yield (%)',
+                    debt: 'Debt Ratio (%)',
+                    volume: 'Volume'
+                },
+                bubbleOptions: ['Market Cap', 'Revenue', 'Net Profit', 'Volume', 'PE Ratio']
+            }
+        };
+
+        function switchLang(lang) {
+            const t = translations[lang];
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('nav-home').textContent = t.navHome;
+            document.getElementById('nav-map').textContent = t.navMap;
+            document.getElementById('nav-simback').textContent = t.navSimback;
+            document.getElementById('nav-me').textContent = t.navMe;
+            document.getElementById('nav-factor').textContent = t.navFactor;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            localStorage.setItem('ebi-lang', lang);
+            dimensionLabels = t.dimensionLabels;
+            
+            updateSelectOptions('xAxis', t.dimensionLabels);
+            updateSelectOptions('yAxis', t.dimensionLabels);
+            updateBubbleOptions(t.bubbleOptions);
+            
+            document.querySelector('label[for="xAxis"], .control-group:nth-child(1) label').textContent = t.xAxisLabel;
+            document.querySelector('.control-group:nth-child(2) label').textContent = t.yAxisLabel;
+            document.querySelector('.control-group:nth-child(3) label').textContent = t.bubbleSizeLabel;
+            document.querySelector('.control-group:nth-child(4) label').textContent = t.minCapLabel;
+            
+            document.querySelectorAll('.filter-title')[0].textContent = t.filterIndustry;
+            document.querySelectorAll('.filter-title')[1].textContent = t.filterOverview;
+            document.querySelectorAll('.filter-title')[2].textContent = t.filterDetail;
+            
+            document.querySelectorAll('.stat-label')[0].textContent = t.statTotal;
+            document.querySelectorAll('.stat-label')[1].textContent = t.statAvgChange;
+            document.querySelectorAll('.stat-label')[2].textContent = t.statAvgPE;
+            document.querySelectorAll('.stat-label')[3].textContent = t.statAvgCap;
+            
+            document.querySelectorAll('.theme-btn')[0].textContent = t.themeIndustry;
+            document.querySelectorAll('.theme-btn')[1].textContent = t.themeConcept;
+            
+            document.getElementById('searchBox').placeholder = t.searchPlaceholder;
+            document.getElementById('selectedStock').textContent = t.clickToView;
+            
+            updateChart();
+        }
+
+        function updateSelectOptions(id, labels) {
+            const select = document.getElementById(id);
+            const currentValue = select.value;
+            select.innerHTML = '';
+            const keys = ['pe', 'pb', 'roe', 'marketCap', 'revenue', 'profit', 'change', 'dividend', 'debt'];
+            keys.forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = labels[key];
+                if (key === currentValue) option.selected = true;
+                select.appendChild(option);
+            });
+        }
+
+        function updateBubbleOptions(options) {
+            const select = document.getElementById('bubbleSize');
+            const currentValue = select.value;
+            const keys = ['marketCap', 'revenue', 'profit', 'volume', 'pe'];
+            select.innerHTML = '';
+            keys.forEach((key, index) => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = options[index];
+                if (key === currentValue) option.selected = true;
+                select.appendChild(option);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('ebi-lang') || 'zh';
+            switchLang(savedLang);
         });
     </script>
 </body>

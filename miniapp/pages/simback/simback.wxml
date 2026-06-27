@@ -1,0 +1,102 @@
+<view class="container">
+  <view class="intro-section">
+    <text class="section-title">{{t.moduleSimback}}</text>
+    <text class="section-desc">{{t.moduleSimbackDesc}}</text>
+  </view>
+
+  <view class="strategy-select">
+    <text class="select-title">{{t.selectStrategy}}</text>
+    <view class="strategy-options">
+      <view 
+        class="strategy-option {{selectedStrategy === 'ma' ? 'active' : ''}}" 
+        bindtap="selectStrategy"
+        data-strategy="ma"
+      >
+        <text class="strategy-icon">📈</text>
+        <text class="strategy-name">{{t.strategyMA}}</text>
+      </view>
+      <view 
+        class="strategy-option {{selectedStrategy === 'momentum' ? 'active' : ''}}" 
+        bindtap="selectStrategy"
+        data-strategy="momentum"
+      >
+        <text class="strategy-icon">🚀</text>
+        <text class="strategy-name">{{t.strategyMomentum}}</text>
+      </view>
+      <view 
+        class="strategy-option {{selectedStrategy === 'mean' ? 'active' : ''}}" 
+        bindtap="selectStrategy"
+        data-strategy="mean"
+      >
+        <text class="strategy-icon">🔄</text>
+        <text class="strategy-name">{{t.strategyMeanReversion}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stock-select">
+    <text class="select-title">{{t.selectStock}}</text>
+    <picker mode="selector" range="{{stockNames}}" bindchange="onStockChange">
+      <view class="picker-btn">
+        <text>{{selectedStock}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="backtest-params">
+    <text class="select-title">{{t.backtestParams}}</text>
+    <view class="param-row">
+      <text class="param-label">{{t.initialCapital}}</text>
+      <view class="param-input-wrap">
+        <input class="param-input" type="number" value="{{params.initialCapital}}" bindinput="onParamInput" data-key="initialCapital" />
+        <text class="param-unit">{{t.currencyUnit}}</text>
+      </view>
+    </view>
+    <view class="param-row">
+      <text class="param-label">{{t.backtestPeriod}}</text>
+      <view class="param-input-wrap">
+        <input class="param-input" type="number" value="{{params.period}}" bindinput="onParamInput" data-key="period" />
+        <text class="param-unit">{{t.periodUnit}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="backtest-btn" bindtap="runBacktest">
+    <text class="btn-text">{{t.runBacktest}}</text>
+  </view>
+
+  <view class="results-section" wx:if="{{showResults}}">
+    <text class="section-title">{{t.backtestResults}}</text>
+    <view class="results-grid">
+      <view class="result-card">
+        <text class="result-label">{{t.totalReturn}}</text>
+        <text class="result-value {{backtestResult.totalReturn > 0 ? 'up' : 'down'}}">
+          {{backtestResult.totalReturn > 0 ? '+' : ''}}{{backtestResult.totalReturn}}%
+        </text>
+      </view>
+      <view class="result-card">
+        <text class="result-label">{{t.annualizedReturn}}</text>
+        <text class="result-value {{backtestResult.annualReturn > 0 ? 'up' : 'down'}}">
+          {{backtestResult.annualReturn > 0 ? '+' : ''}}{{backtestResult.annualReturn}}%
+        </text>
+      </view>
+      <view class="result-card">
+        <text class="result-label">{{t.maxDrawdown}}</text>
+        <text class="result-value down">{{backtestResult.maxDrawdown}}%</text>
+      </view>
+      <view class="result-card">
+        <text class="result-label">{{t.sharpeRatio}}</text>
+        <text class="result-value {{backtestResult.sharpe > 0 ? 'up' : 'down'}}">{{backtestResult.sharpe}}</text>
+      </view>
+      <view class="result-card">
+        <text class="result-label">{{t.winRate}}</text>
+        <text class="result-value">{{backtestResult.winRate}}%</text>
+      </view>
+      <view class="result-card">
+        <text class="result-label">{{t.tradeCount}}</text>
+        <text class="result-value">{{backtestResult.trades}}</text>
+      </view>
+    </view>
+  </view>
+</view>

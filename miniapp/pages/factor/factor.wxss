@@ -1,0 +1,141 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.intro-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.section-desc {
+  font-size: 26rpx;
+  color: #8899aa;
+  margin-top: 10rpx;
+}
+
+.factor-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.category-card {
+  background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+  border: 1px solid #2a3441;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+}
+
+.category-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15rpx;
+}
+
+.icon-text {
+  font-size: 36rpx;
+}
+
+.category-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.category-desc {
+  font-size: 22rpx;
+  color: #8899aa;
+  margin-top: 8rpx;
+}
+
+.category-count {
+  font-size: 22rpx;
+  color: #00d4ff;
+  margin-top: 10rpx;
+}
+
+.factors-list {
+  background: linear-gradient(145deg, #1a1f2e 0%, #151a25 100%);
+  border: 1px solid #2a3441;
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.list-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.factor-item {
+  padding: 24rpx 0;
+  border-bottom: 1px solid #2a3441;
+}
+
+.factor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.factor-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.factor-tag {
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.factor-desc {
+  font-size: 24rpx;
+  color: #8899aa;
+  margin-bottom: 15rpx;
+}
+
+.factor-metrics {
+  display: flex;
+  gap: 30rpx;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 22rpx;
+  color: #8899aa;
+}
+
+.metric-value {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #e0e6ed;
+}
+
+.metric-value.up {
+  color: #00d4aa;
+}
+
+.metric-value.down {
+  color: #ff6b6b;
+}

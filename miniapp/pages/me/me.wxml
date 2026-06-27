@@ -1,0 +1,100 @@
+<view class="container">
+  <view class="user-card">
+    <view class="user-avatar">
+      <text class="avatar-text">👤</text>
+    </view>
+    <view class="user-info">
+      <text class="user-name">{{t.userName}}</text>
+      <text class="user-level">{{t.userLevel}}</text>
+      <text class="user-desc">{{t.userDesc}}</text>
+    </view>
+    <view class="user-stats">
+      <view class="stat-item">
+        <text class="stat-value">¥125,680</text>
+        <text class="stat-label">{{t.totalAssets}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">+8.5%</text>
+        <text class="stat-label">{{t.totalReturn}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">156</text>
+        <text class="stat-label">{{t.tradeCount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToAction" data-index="0">
+      <text class="action-icon">📊</text>
+      <text class="action-name">{{t.holdings}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAction" data-index="1">
+      <text class="action-icon">📈</text>
+      <text class="action-name">{{t.tradeHistory}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAction" data-index="2">
+      <text class="action-icon">🎯</text>
+      <text class="action-name">{{t.strategyManage}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAction" data-index="3">
+      <text class="action-icon">💳</text>
+      <text class="action-name">{{t.fundDetail}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAction" data-index="4">
+      <text class="action-icon">🎁</text>
+      <text class="action-name">{{t.myRights}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAction" data-index="5">
+      <text class="action-icon">⚙️</text>
+      <text class="action-name">{{t.settings}}</text>
+    </view>
+  </view>
+
+  <view class="portfolio-section">
+    <view class="section-header">
+      <text class="section-title">{{t.portfolio}}</text>
+      <text class="section-more">{{t.viewAll}} →</text>
+    </view>
+    <view class="portfolio-list">
+      <view class="portfolio-item" wx:for="{{portfolio}}" wx:key="code">
+        <view class="portfolio-info">
+          <text class="portfolio-name">{{item.name}}</text>
+          <text class="portfolio-code">{{item.code}}</text>
+        </view>
+        <view class="portfolio-price">
+          <text class="price">{{item.price}}</text>
+          <text class="change {{item.change > 0 ? 'up' : 'down'}}">
+            {{item.change > 0 ? '+' : ''}}{{item.change}}%
+          </text>
+        </view>
+        <view class="portfolio-position">
+          <text class="position">{{t.holdShares}} {{item.shares}} {{t.sharesUnit}}</text>
+          <text class="market-value">{{t.marketValue}} ¥{{item.marketValue}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="performance-section">
+    <view class="section-header">
+      <text class="section-title">{{t.strategies}}</text>
+      <text class="section-more">{{t.viewAll}} →</text>
+    </view>
+    <view class="performance-list">
+      <view class="performance-item" wx:for="{{strategies}}" wx:key="name">
+        <view class="performance-info">
+          <text class="strategy-name">{{item.name}}</text>
+          <text class="strategy-status {{item.status === 'running' ? 'running' : 'stopped'}}">
+            {{item.status === 'running' ? t.running : t.stopped}}
+          </text>
+        </view>
+        <view class="performance-return">
+          <text class="return-value {{item.totalReturn > 0 ? 'up' : 'down'}}">
+            {{item.totalReturn > 0 ? '+' : ''}}{{item.totalReturn}}%
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

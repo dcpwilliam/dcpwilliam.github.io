@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="intro-section">
+    <text class="section-title">{{t.moduleFactor}}</text>
+    <text class="section-desc">{{t.moduleFactorDesc}}</text>
+  </view>
+
+  <view class="factor-categories">
+    <view class="category-card" wx:for="{{factorCategories}}" wx:key="name" bindtap="selectCategory" data-index="{{index}}">
+      <view class="category-icon" style="background: rgba(0, 212, 255, 0.15);">
+        <text class="icon-text">{{item.icon}}</text>
+      </view>
+      <text class="category-name">{{item.name}}</text>
+      <text class="category-desc">{{item.desc}}</text>
+      <view class="category-count">{{item.count}}{{t.factorCountSuffix}}</view>
+    </view>
+  </view>
+
+  <view class="factors-list">
+    <text class="list-title">{{t.hotFactors}}</text>
+    <view class="factor-item" wx:for="{{factors}}" wx:key="name">
+      <view class="factor-header">
+        <text class="factor-name">{{item.name}}</text>
+        <text class="factor-tag" style="background: rgba(0, 212, 170, 0.15); color: #00d4aa;">{{item.type}}</text>
+      </view>
+      <text class="factor-desc">{{item.desc}}</text>
+      <view class="factor-metrics">
+        <view class="metric">
+          <text class="metric-label">{{t.icMean}}</text>
+          <text class="metric-value {{item.ic > 0 ? 'up' : 'down'}}">{{item.ic}}</text>
+        </view>
+        <view class="metric">
+          <text class="metric-label">{{t.icir}}</text>
+          <text class="metric-value {{item.icir > 0 ? 'up' : 'down'}}">{{item.icir}}</text>
+        </view>
+        <view class="metric">
+          <text class="metric-label">{{t.annualReturn}}</text>
+          <text class="metric-value {{item.annualReturn > 0 ? 'up' : 'down'}}">
+            {{item.annualReturn > 0 ? '+' : ''}}{{item.annualReturn}}%
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

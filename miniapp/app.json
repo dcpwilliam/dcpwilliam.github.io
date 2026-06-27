@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/map/map",
+    "pages/factor/factor",
+    "pages/simback/simback",
+    "pages/me/me"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0a0e1a",
+    "navigationBarTitleText": "EBI 循证投资",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0a0e1a"
+  },
+  "tabBar": {
+    "color": "#8899aa",
+    "selectedColor": "#00d4ff",
+    "backgroundColor": "#1a1f2e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "雷达",
+        "iconPath": "images/map.png",
+        "selectedIconPath": "images/map-active.png"
+      },
+      {
+        "pagePath": "pages/factor/factor",
+        "text": "因子",
+        "iconPath": "images/factor.png",
+        "selectedIconPath": "images/factor-active.png"
+      },
+      {
+        "pagePath": "pages/simback/simback",
+        "text": "模拟",
+        "iconPath": "images/simback.png",
+        "selectedIconPath": "images/simback-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

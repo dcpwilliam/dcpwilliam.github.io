@@ -29,9 +29,37 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #2a3441;
+            background: rgba(255, 255, 255, 0.05);
+            color: #8899aa;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+        .lang-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            border-color: transparent;
+            color: #ffffff;
+        }
         .header-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         .header-links a {
             color: #8899aa;
@@ -95,27 +123,97 @@
 </head>
 <body>
     <header class="header">
-        <h1>🔬 因子探究</h1>
-        <nav class="header-links">
-            <a href="index.html">首页</a>
-            <a href="map.html">市场雷达</a>
-            <a href="simback.html">策略模拟</a>
-            <a href="me.html">个人信息</a>
-            <a href="factor.html" class="active">因子探究</a>
-        </nav>
+        <h1 id="page-title">🔬 因子探究</h1>
+        <div class="header-right">
+            <nav class="header-links">
+                <a href="index.html" id="nav-home">首页</a>
+                <a href="map.html" id="nav-map">市场雷达</a>
+                <a href="simback.html" id="nav-simback">策略模拟</a>
+                <a href="me.html" id="nav-me">个人信息</a>
+                <a href="factor.html" class="active" id="nav-factor">因子探究</a>
+            </nav>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中文</button>
+                <button class="lang-btn" data-lang="ja" onclick="switchLang('ja')">日本語</button>
+                <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
+            </div>
+        </div>
     </header>
     
     <main class="main-content">
         <div class="coming-soon">
             <div class="coming-soon-icon">🔬</div>
-            <h2>因子探究</h2>
-            <p>
+            <h2 id="page-subtitle">因子探究</h2>
+            <p id="page-desc">
                 深入分析各类投资因子<br>
                 包括价值因子、动量因子、质量因子等<br>
                 发现市场规律与投资机会
             </p>
-            <a href="index.html" class="back-link">← 返回首页</a>
+            <a href="index.html" class="back-link" id="back-link">← 返回首页</a>
         </div>
     </main>
+
+    <script>
+        const translations = {
+            zh: {
+                pageTitle: '🔬 因子探究',
+                pageSubtitle: '因子探究',
+                pageDesc: '深入分析各类投资因子\n包括价值因子、动量因子、质量因子等\n发现市场规律与投资机会',
+                backLink: '← 返回首页',
+                navHome: '首页',
+                navMap: '市场雷达',
+                navSimback: '策略模拟',
+                navMe: '个人信息',
+                navFactor: '因子探究'
+            },
+            ja: {
+                pageTitle: '🔬 ファクター分析',
+                pageSubtitle: 'ファクター分析',
+                pageDesc: '各種投資ファクターを深く分析します\nバリューファクター、モメンタムファクター、クオリティファクターなど\n市場の法則と投資機会を発見します',
+                backLink: '← ホームに戻る',
+                navHome: 'ホーム',
+                navMap: '市場レーダー',
+                navSimback: '戦略シミュレーション',
+                navMe: '個人情報',
+                navFactor: 'ファクター分析'
+            },
+            en: {
+                pageTitle: '🔬 Factor Analysis',
+                pageSubtitle: 'Factor Analysis',
+                pageDesc: 'Deeply analyze various investment factors\nIncluding value, momentum, quality factors\nDiscover market patterns and opportunities',
+                backLink: '← Back to Home',
+                navHome: 'Home',
+                navMap: 'Market Radar',
+                navSimback: 'Strategy Simulation',
+                navMe: 'Profile',
+                navFactor: 'Factor Analysis'
+            }
+        };
+
+        function switchLang(lang) {
+            const t = translations[lang];
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('page-subtitle').textContent = t.pageSubtitle;
+            document.getElementById('page-desc').innerHTML = t.pageDesc.replace(/\n/g, '<br>');
+            document.getElementById('back-link').textContent = t.backLink;
+            document.getElementById('nav-home').textContent = t.navHome;
+            document.getElementById('nav-map').textContent = t.navMap;
+            document.getElementById('nav-simback').textContent = t.navSimback;
+            document.getElementById('nav-me').textContent = t.navMe;
+            document.getElementById('nav-factor').textContent = t.navFactor;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            localStorage.setItem('ebi-lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('ebi-lang') || 'zh';
+            switchLang(savedLang);
+        });
+    </script>
 </body>
 </html>

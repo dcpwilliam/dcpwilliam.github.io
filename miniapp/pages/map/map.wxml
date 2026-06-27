@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="search-bar">
+    <input class="search-input" placeholder="{{t.searchPlaceholder}}" placeholder-class="placeholder" bindinput="onSearchInput" />
+  </view>
+
+  <view class="filter-section">
+    <scroll-view scroll-x class="filter-scroll">
+      <view class="filter-tags">
+        <view 
+          class="filter-tag {{currentFilter === 'all' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-filter="all"
+        >
+          {{t.filterAll}}
+        </view>
+        <view 
+          wx:for="{{industries}}" 
+          wx:key="name"
+          class="filter-tag {{currentFilter === item.name ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-filter="{{item.name}}"
+          style="border-color: {{item.color}}"
+        >
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="market-summary">
+    <view class="summary-item">
+      <text class="summary-label">{{t.upCount}}</text>
+      <text class="summary-value up">28</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">{{t.downCount}}</text>
+      <text class="summary-value down">12</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-label">{{t.flatCount}}</text>
+      <text class="summary-value">0</text>
+    </view>
+  </view>
+
+  <view class="stocks-list">
+    <view class="list-header">
+      <text class="list-title">{{t.stockList}}</text>
+      <text class="list-count">{{filteredStocks.length}} {{t.stockCountSuffix}}</text>
+    </view>
+    
+    <view class="stock-item" wx:for="{{filteredStocks}}" wx:key="code" bindtap="viewStockDetail" data-index="{{index}}">
+      <view class="stock-info">
+        <view class="stock-name">{{item.name}}</view>
+        <view class="stock-code">{{item.code}}</view>
+      </view>
+      <view class="stock-price">
+        <text class="price">{{item.price}}</text>
+        <text class="change {{item.change > 0 ? 'up' : 'down'}}">
+          {{item.change > 0 ? '+' : ''}}{{item.change}}%
+        </text>
+      </view>
+      <view class="stock-meta">
+        <text class="meta-item">{{t.peLabel}}: {{item.pe}}</text>
+        <text class="meta-item">{{t.roeLabel}}: {{item.roe}}%</text>
+      </view>
+    </view>
+  </view>
+</view>

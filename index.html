@@ -43,6 +43,33 @@
             margin-top: 4px;
         }
         
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #2a3441;
+            background: rgba(255, 255, 255, 0.05);
+            color: #8899aa;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7b61ff);
+            border-color: transparent;
+            color: #ffffff;
+        }
+        
         .main-content {
             flex: 1;
             padding: 40px;
@@ -212,53 +239,137 @@
 <body>
     <header class="header">
         <div>
-            <h1>EBI 循证投资</h1>
-            <p class="header-subtitle">Evidence-Based Investing Platform</p>
+            <h1 id="app-title">EBI 循证投资</h1>
+            <p class="header-subtitle" id="app-subtitle">Evidence-Based Investing Platform</p>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中文</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLang('ja')">日本語</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
         </div>
     </header>
     
     <main class="main-content">
         <section class="welcome-section">
-            <h2 class="welcome-title">欢迎使用 EBI 平台</h2>
-            <p class="welcome-desc">基于数据和策略的循证投资分析工具，助您做出更明智的投资决策</p>
+            <h2 class="welcome-title" id="welcome-title">欢迎使用 EBI 平台</h2>
+            <p class="welcome-desc" id="welcome-desc">基于数据和策略的循证投资分析工具，助您做出更明智的投资决策</p>
         </section>
         
         <div class="modules-grid">
             <a href="factor.html" class="module-card">
                 <div class="module-icon">🔬</div>
-                <h3 class="module-title">因子探究</h3>
-                <p class="module-desc">深入分析各类投资因子，发现市场规律与投资机会，构建科学的投资框架</p>
+                <h3 class="module-title" id="module-title-1">因子探究</h3>
+                <p class="module-desc" id="module-desc-1">深入分析各类投资因子，发现市场规律与投资机会，构建科学的投资框架</p>
                 <div class="module-arrow">→</div>
             </a>
             
             <a href="map.html" class="module-card">
                 <div class="module-icon">📡</div>
-                <h3 class="module-title">市场雷达</h3>
-                <p class="module-desc">多维度可视化股票市场，实时监控行业动态，把握市场脉搏与热点轮动</p>
+                <h3 class="module-title" id="module-title-2">市场雷达</h3>
+                <p class="module-desc" id="module-desc-2">多维度可视化股票市场，实时监控行业动态，把握市场脉搏与热点轮动</p>
                 <div class="module-arrow">→</div>
             </a>
             
             <a href="simback.html" class="module-card">
                 <div class="module-icon">🎮</div>
-                <h3 class="module-title">策略模拟</h3>
-                <p class="module-desc">模拟交易与回测验证，在真实环境中检验策略有效性，降低实盘风险</p>
+                <h3 class="module-title" id="module-title-3">策略模拟</h3>
+                <p class="module-desc" id="module-desc-3">模拟交易与回测验证，在真实环境中检验策略有效性，降低实盘风险</p>
                 <div class="module-arrow">→</div>
             </a>
             
             <a href="me.html" class="module-card">
                 <div class="module-icon">👤</div>
-                <h3 class="module-title">个人信息</h3>
-                <p class="module-desc">管理个人资料与偏好设置，查看投资组合表现，追踪成长轨迹</p>
+                <h3 class="module-title" id="module-title-4">个人信息</h3>
+                <p class="module-desc" id="module-desc-4">管理个人资料与偏好设置，查看投资组合表现，追踪成长轨迹</p>
                 <div class="module-arrow">→</div>
             </a>
         </div>
     </main>
     
     <footer class="footer">
-        <p class="footer-text">
+        <p class="footer-text" id="footer-text">
             © 2024 EBI 循证投资平台 | 
             <a href="https://github.com/dcpwilliam" target="_blank">GitHub</a>
         </p>
     </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                appTitle: 'EBI 循证投资',
+                appSubtitle: 'Evidence-Based Investing Platform',
+                welcomeTitle: '欢迎使用 EBI 平台',
+                welcomeDesc: '基于数据和策略的循证投资分析工具，助您做出更明智的投资决策',
+                moduleTitle1: '因子探究',
+                moduleDesc1: '深入分析各类投资因子，发现市场规律与投资机会，构建科学的投资框架',
+                moduleTitle2: '市场雷达',
+                moduleDesc2: '多维度可视化股票市场，实时监控行业动态，把握市场脉搏与热点轮动',
+                moduleTitle3: '策略模拟',
+                moduleDesc3: '模拟交易与回测验证，在真实环境中检验策略有效性，降低实盘风险',
+                moduleTitle4: '个人信息',
+                moduleDesc4: '管理个人资料与偏好设置，查看投资组合表现，追踪成长轨迹',
+                footerText: '© 2024 EBI 循证投资平台 | <a href="https://github.com/dcpwilliam" target="_blank">GitHub</a>'
+            },
+            ja: {
+                appTitle: 'EBI 証拠に基づく投資',
+                appSubtitle: 'Evidence-Based Investing Platform',
+                welcomeTitle: 'EBIプラットフォームへようこそ',
+                welcomeDesc: 'データと戦略に基づく証拠に基づく投資分析ツールで、より賢明な投資判断を支援します',
+                moduleTitle1: 'ファクター分析',
+                moduleDesc1: '各種投資ファクターを深く分析し、市場の法則と投資機会を発見し、科学的な投資フレームワークを構築します',
+                moduleTitle2: '市場レーダー',
+                moduleDesc2: '多次元的に株式市場を可視化し、業界動向をリアルタイムで監視し、市場のパルスとホットスポットの輪動を把握します',
+                moduleTitle3: '戦略シミュレーション',
+                moduleDesc3: '模擬取引とバックテスト検証を行い、実際の環境で戦略の有効性を検証し、実取引リスクを低減します',
+                moduleTitle4: '個人情報',
+                moduleDesc4: '個人データと設定を管理し、投資ポートフォリオのパフォーマンスを確認し、成長軌跡を追跡します',
+                footerText: '© 2024 EBI 証拠に基づく投資プラットフォーム | <a href="https://github.com/dcpwilliam" target="_blank">GitHub</a>'
+            },
+            en: {
+                appTitle: 'EBI Evidence-Based Investing',
+                appSubtitle: 'Evidence-Based Investing Platform',
+                welcomeTitle: 'Welcome to EBI Platform',
+                welcomeDesc: 'Data and strategy driven investment analysis tool to help you make smarter investment decisions',
+                moduleTitle1: 'Factor Analysis',
+                moduleDesc1: 'Deeply analyze various investment factors, discover market patterns and opportunities, build scientific investment frameworks',
+                moduleTitle2: 'Market Radar',
+                moduleDesc2: 'Multi-dimensional visualization of stock market, real-time industry monitoring, capture market pulse and hot rotation',
+                moduleTitle3: 'Strategy Simulation',
+                moduleDesc3: 'Simulated trading and backtesting validation, verify strategy effectiveness in real environment, reduce live trading risk',
+                moduleTitle4: 'Profile',
+                moduleDesc4: 'Manage personal data and preferences, view portfolio performance, track growth trajectory',
+                footerText: '© 2024 EBI Evidence-Based Investing Platform | <a href="https://github.com/dcpwilliam" target="_blank">GitHub</a>'
+            }
+        };
+
+        function switchLang(lang) {
+            const t = translations[lang];
+            document.getElementById('app-title').textContent = t.appTitle;
+            document.getElementById('app-subtitle').textContent = t.appSubtitle;
+            document.getElementById('welcome-title').textContent = t.welcomeTitle;
+            document.getElementById('welcome-desc').textContent = t.welcomeDesc;
+            document.getElementById('module-title-1').textContent = t.moduleTitle1;
+            document.getElementById('module-desc-1').textContent = t.moduleDesc1;
+            document.getElementById('module-title-2').textContent = t.moduleTitle2;
+            document.getElementById('module-desc-2').textContent = t.moduleDesc2;
+            document.getElementById('module-title-3').textContent = t.moduleTitle3;
+            document.getElementById('module-desc-3').textContent = t.moduleDesc3;
+            document.getElementById('module-title-4').textContent = t.moduleTitle4;
+            document.getElementById('module-desc-4').textContent = t.moduleDesc4;
+            document.getElementById('footer-text').innerHTML = t.footerText;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            localStorage.setItem('ebi-lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('ebi-lang') || 'zh';
+            switchLang(savedLang);
+        });
+    </script>
 </body>
 </html>
