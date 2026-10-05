@@ -1,0 +1,798 @@
+2026-10-04 20:59:38.199 INFO  [aiservice.access] → #aa16f9f3 GET /health
+2026-10-04 20:59:38.200 DEBUG [aiservice.access] → #aa16f9f3 命中 health
+2026-10-04 20:59:38.217 INFO  [aiservice.access] ← #aa16f9f3 GET /health 200 18.0ms
+2026-10-04 20:59:38.217 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 20:59:38.218 INFO  [aiservice.access] → #e4b9fcbd GET /api/info
+2026-10-04 20:59:38.218 DEBUG [aiservice.access] → #e4b9fcbd 命中 info
+2026-10-04 20:59:38.218 INFO  [aiservice.access] ← #e4b9fcbd GET /api/info 200 0.1ms
+2026-10-04 20:59:38.218 DEBUG [aiservice       ] 127.0.0.1 "GET /api/info HTTP/1.1" 200 -
+2026-10-04 20:59:38.219 INFO  [aiservice.access] → #94e56f59 GET /api/prompt/templates
+2026-10-04 20:59:38.219 DEBUG [aiservice.access] → #94e56f59 命中 templates
+2026-10-04 20:59:38.219 INFO  [aiservice.access] ← #94e56f59 GET /api/prompt/templates 200 0.1ms
+2026-10-04 20:59:38.219 DEBUG [aiservice       ] 127.0.0.1 "GET /api/prompt/templates HTTP/1.1" 200 -
+2026-10-04 20:59:38.219 INFO  [aiservice.access] → #1b7e8f85 POST /api/prompt/render
+2026-10-04 20:59:38.219 DEBUG [aiservice.access] → #1b7e8f85 body {"template": "analyze", "variables": {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd10\u65a4"}}
+2026-10-04 20:59:38.219 DEBUG [aiservice.access] → #1b7e8f85 命中 render
+2026-10-04 20:59:38.219 INFO  [aiservice.access] ← #1b7e8f85 POST /api/prompt/render 200 0.1ms
+2026-10-04 20:59:38.219 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/render HTTP/1.1" 200 -
+2026-10-04 20:59:38.220 INFO  [aiservice.access] → #053b941c POST /api/prompt/analyze
+2026-10-04 20:59:38.220 DEBUG [aiservice.access] → #053b941c body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 20:59:38.220 DEBUG [aiservice.access] → #053b941c 命中 analyze
+2026-10-04 20:59:38.220 INFO  [aiservice.prompt] analyze 规则引擎 | user=- len=11 意图=new 领域=fitness 耗时=0.6ms
+2026-10-04 20:59:38.220 INFO  [aiservice.access] ← #053b941c POST /api/prompt/analyze 200 0.7ms
+2026-10-04 20:59:38.221 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 20:59:38.221 INFO  [aiservice.access] → #24e04e24 POST /api/prompt/complete
+2026-10-04 20:59:38.221 DEBUG [aiservice.access] → #24e04e24 body {"template": "reframe", "variables": {"text": "\u6700\u8fd1\u53c8\u6ca1\u575a\u6301\u4e0b\u6765"}}
+2026-10-04 20:59:38.221 DEBUG [aiservice.access] → #24e04e24 命中 complete
+2026-10-04 20:59:38.221 INFO  [aiservice.prompt] complete | template=reframe provider=echo 输出 83 字 耗时=0.0ms
+2026-10-04 20:59:38.221 INFO  [aiservice.access] ← #24e04e24 POST /api/prompt/complete 200 0.2ms
+2026-10-04 20:59:38.221 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/complete HTTP/1.1" 200 -
+2026-10-04 20:59:38.222 INFO  [aiservice.access] → #f97f8bd6 POST /api/users
+2026-10-04 20:59:38.222 DEBUG [aiservice.access] → #f97f8bd6 body {"name": "\u81ea\u6d4b\u7528\u6237", "email": "selftest@timeline.dev"}
+2026-10-04 20:59:38.222 DEBUG [aiservice.access] → #f97f8bd6 命中 create
+2026-10-04 20:59:38.231 INFO  [aiservice.access] ← #f97f8bd6 POST /api/users 200 9.9ms
+2026-10-04 20:59:38.232 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users HTTP/1.1" 200 -
+2026-10-04 20:59:38.232 INFO  [aiservice.access] → #46c2d360 GET /api/users
+2026-10-04 20:59:38.232 DEBUG [aiservice.access] → #46c2d360 命中 index
+2026-10-04 20:59:38.271 INFO  [aiservice.access] ← #46c2d360 GET /api/users 200 38.7ms
+2026-10-04 20:59:38.271 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users HTTP/1.1" 200 -
+2026-10-04 20:59:38.272 INFO  [aiservice.access] → #5cbac854 GET /api/users/u_e4f456f7ad4c
+2026-10-04 20:59:38.272 DEBUG [aiservice.access] → #5cbac854 命中 detail
+2026-10-04 20:59:38.278 INFO  [aiservice.access] ← #5cbac854 GET /api/users/u_e4f456f7ad4c 200 6.6ms
+2026-10-04 20:59:38.278 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.279 INFO  [aiservice.access] → #907c8d6c PATCH /api/users/u_e4f456f7ad4c
+2026-10-04 20:59:38.279 DEBUG [aiservice.access] → #907c8d6c body {"name": "\u81ea\u6d4b\u7528\u6237\u6539\u540d"}
+2026-10-04 20:59:38.279 DEBUG [aiservice.access] → #907c8d6c 命中 update
+2026-10-04 20:59:38.303 INFO  [aiservice.access] ← #907c8d6c PATCH /api/users/u_e4f456f7ad4c 200 24.3ms
+2026-10-04 20:59:38.303 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/users/u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.304 INFO  [aiservice.access] → #1b9967dd POST /api/timeline/ingest?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.304 DEBUG [aiservice.access] → #1b9967dd body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 20:59:38.304 DEBUG [aiservice.access] → #1b9967dd 命中 ingest
+2026-10-04 20:59:38.309 INFO  [aiservice.goal  ] ingest | user=u_e4f456f7ad4c 新建 目标=三个月内减重 10 斤 意图=new 分数=0.00 目标数=1
+2026-10-04 20:59:38.319 INFO  [aiservice.access] ← #1b9967dd POST /api/timeline/ingest 200 14.9ms
+2026-10-04 20:59:38.319 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.320 INFO  [aiservice.access] → #6f732092 POST /api/timeline/ingest?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.320 DEBUG [aiservice.access] → #6f732092 body {"text": "\u4eca\u5929\u8dd1\u4e86 3 \u516c\u91cc"}
+2026-10-04 20:59:38.320 DEBUG [aiservice.access] → #6f732092 命中 ingest
+2026-10-04 20:59:38.325 INFO  [aiservice.goal  ] ingest | user=u_e4f456f7ad4c 归拢 目标=三个月内减重 10 斤 意图=progress 分数=0.50 目标数=1
+2026-10-04 20:59:38.336 INFO  [aiservice.access] ← #6f732092 POST /api/timeline/ingest 200 16.1ms
+2026-10-04 20:59:38.336 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.337 INFO  [aiservice.access] → #985969bd POST /api/timeline/goals/g_cd6ad8ecf0c8/actions?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.337 DEBUG [aiservice.access] → #985969bd body {"actions": [{"title": "\u8dd1 3 \u516c\u91cc", "tip": "\u914d\u901f\u968f\u610f\uff0c\u8dd1\u5b8c\u5c31\u884c", "minutes": 30}]}
+2026-10-04 20:59:38.337 DEBUG [aiservice.access] → #985969bd 命中 add_action
+2026-10-04 20:59:38.352 INFO  [aiservice.access] ← #985969bd POST /api/timeline/goals/g_cd6ad8ecf0c8/actions 200 15.1ms
+2026-10-04 20:59:38.352 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/goals/g_cd6ad8ecf0c8/actions?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.352 INFO  [aiservice.access] → #f06cc8e6 GET /api/timeline?user_id=u_e4f456f7ad4c&days=7
+2026-10-04 20:59:38.352 DEBUG [aiservice.access] → #f06cc8e6 命中 timeline
+2026-10-04 20:59:38.367 INFO  [aiservice.access] ← #f06cc8e6 GET /api/timeline 200 14.6ms
+2026-10-04 20:59:38.367 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=u_e4f456f7ad4c&days=7 HTTP/1.1" 200 -
+2026-10-04 20:59:38.368 INFO  [aiservice.access] → #4abf504d PATCH /api/timeline/tasks/t_2d2e1aa64cf8?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.368 DEBUG [aiservice.access] → #4abf504d body {"record_id": "r_0edfe000a5e0", "done": true}
+2026-10-04 20:59:38.368 DEBUG [aiservice.access] → #4abf504d 命中 toggle_task
+2026-10-04 20:59:38.372 INFO  [aiservice.timeline] 勾选任务 | user=u_e4f456f7ad4c task=t_2d2e1aa64cf8 done=True 记录进度=100%
+2026-10-04 20:59:38.382 INFO  [aiservice.access] ← #4abf504d PATCH /api/timeline/tasks/t_2d2e1aa64cf8 200 14.3ms
+2026-10-04 20:59:38.382 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/timeline/tasks/t_2d2e1aa64cf8?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.383 INFO  [aiservice.access] → #1f964e11 POST /api/timeline/sync?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.383 DEBUG [aiservice.access] → #1f964e11 命中 sync
+2026-10-04 20:59:38.397 INFO  [aiservice.access] ← #1f964e11 POST /api/timeline/sync 200 14.6ms
+2026-10-04 20:59:38.397 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/sync?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.398 INFO  [aiservice.access] → #7ddc33cf GET /api/timeline/stats?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.398 DEBUG [aiservice.access] → #7ddc33cf 命中 stats
+2026-10-04 20:59:38.415 INFO  [aiservice.access] ← #7ddc33cf GET /api/timeline/stats 200 17.1ms
+2026-10-04 20:59:38.415 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/stats?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.416 INFO  [aiservice.access] → #097adb09 GET /api/timeline/goals?user_id=u_e4f456f7ad4c
+2026-10-04 20:59:38.416 DEBUG [aiservice.access] → #097adb09 命中 goals
+2026-10-04 20:59:38.431 INFO  [aiservice.access] ← #097adb09 GET /api/timeline/goals 200 15.1ms
+2026-10-04 20:59:38.431 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/goals?user_id=u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 20:59:38.432 INFO  [aiservice.access] → #60bc69df GET /api/users/u_e4f456f7ad4c/export
+2026-10-04 20:59:38.432 DEBUG [aiservice.access] → #60bc69df 命中 export
+2026-10-04 20:59:38.437 INFO  [aiservice.access] ← #60bc69df GET /api/users/u_e4f456f7ad4c/export 200 5.1ms
+2026-10-04 20:59:38.437 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_e4f456f7ad4c/export HTTP/1.1" 200 -
+2026-10-04 20:59:38.438 INFO  [aiservice.access] → #104cd4a6 POST /api/users/u_e4f456f7ad4c/import
+2026-10-04 20:59:38.438 DEBUG [aiservice.access] → #104cd4a6 body {"goals": [{"id": "g_cd6ad8ecf0c8", "title": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4", "criterion": "\u57283\u4e2a \u00b7 3\u4e2a\u6708\u4e4b\u5185\uff0c\u6211\u80fd\u660e\u786e\u8bf4\u51fa\u5b83\u5df2\u7ecf\u5b8c\u6210\u4e86", "categoryKey": "fitness", "categoryName": "\u5065\u5eb7\u5851\u5 …(+1675)
+2026-10-04 20:59:38.438 DEBUG [aiservice.access] → #104cd4a6 命中 import_data
+2026-10-04 20:59:38.452 INFO  [aiservice.access] ← #104cd4a6 POST /api/users/u_e4f456f7ad4c/import 200 14.7ms
+2026-10-04 20:59:38.452 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users/u_e4f456f7ad4c/import HTTP/1.1" 200 -
+2026-10-04 20:59:38.453 INFO  [aiservice.access] → #1f8bbb68 GET /api/state
+2026-10-04 20:59:38.453 DEBUG [aiservice.access] → #1f8bbb68 命中 pull
+2026-10-04 20:59:38.453 WARNING [aiservice.access] ← #1f8bbb68 GET /api/state 业务异常 401: 缺少 Bearer token（调试可加 ?user_id=xxx）
+2026-10-04 20:59:38.453 INFO  [aiservice.access] ← #1f8bbb68 GET /api/state 401 0.1ms
+2026-10-04 20:59:38.453 DEBUG [aiservice       ] 127.0.0.1 "GET /api/state HTTP/1.1" 401 -
+2026-10-04 20:59:38.454 INFO  [aiservice.access] → #23a6c15a PUT /api/state?user_id=legacy_demo
+2026-10-04 20:59:38.454 DEBUG [aiservice.access] → #23a6c15a body {"goals": [], "records": []}
+2026-10-04 20:59:38.454 DEBUG [aiservice.access] → #23a6c15a 命中 push
+2026-10-04 20:59:38.475 INFO  [aiservice.access] ← #23a6c15a PUT /api/state 200 21.0ms
+2026-10-04 20:59:38.475 DEBUG [aiservice       ] 127.0.0.1 "PUT /api/state?user_id=legacy_demo HTTP/1.1" 200 -
+2026-10-04 20:59:38.475 INFO  [aiservice.access] → #9af5988f DELETE /api/users/u_e4f456f7ad4c
+2026-10-04 20:59:38.476 DEBUG [aiservice.access] → #9af5988f 命中 remove
+2026-10-04 20:59:38.515 INFO  [aiservice.access] ← #9af5988f DELETE /api/users/u_e4f456f7ad4c 200 39.9ms
+2026-10-04 20:59:38.515 DEBUG [aiservice       ] 127.0.0.1 "DELETE /api/users/u_e4f456f7ad4c HTTP/1.1" 200 -
+2026-10-04 21:03:55.580 INFO  [aiservice.access] → #1b1a5e33 POST /api/prompt/analyze
+2026-10-04 21:03:55.580 DEBUG [aiservice.access] → #1b1a5e33 body {"text":"三个月内减重 10 斤","user_id":"anonymous","use_llm":false}
+2026-10-04 21:03:55.580 DEBUG [aiservice.access] → #1b1a5e33 命中 analyze
+2026-10-04 21:03:55.587 INFO  [aiservice.prompt] analyze 规则引擎 | user=anonymous len=11 意图=new 领域=fitness 耗时=0.6ms
+2026-10-04 21:03:55.587 INFO  [aiservice.access] ← #1b1a5e33 POST /api/prompt/analyze 200 7.3ms
+2026-10-04 21:03:55.587 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:03:55.590 INFO  [aiservice.access] → #7a01dc56 POST /api/prompt/analyze
+2026-10-04 21:03:55.590 DEBUG [aiservice.access] → #7a01dc56 body {"text":"年底前存下 5 万块","user_id":"anonymous","use_llm":true}
+2026-10-04 21:03:55.590 DEBUG [aiservice.access] → #7a01dc56 命中 analyze
+2026-10-04 21:03:55.600 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=echo model=deepseek-chat len=10
+2026-10-04 21:03:55.600 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=0.2ms keys=category,criterion,goalTitle,intent,intentLabel,provider,suggestions,summary
+2026-10-04 21:03:55.600 INFO  [aiservice.access] ← #7a01dc56 POST /api/prompt/analyze 200 9.9ms
+2026-10-04 21:03:55.600 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:03:55.602 INFO  [aiservice.access] → #dd2a1355 GET /api/timeline?user_id=anonymous&days=7
+2026-10-04 21:03:55.602 DEBUG [aiservice.access] → #dd2a1355 body {}
+2026-10-04 21:03:55.602 DEBUG [aiservice.access] → #dd2a1355 命中 timeline
+2026-10-04 21:03:55.635 INFO  [aiservice.access] ← #dd2a1355 GET /api/timeline 200 33.3ms
+2026-10-04 21:03:55.635 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=anonymous&days=7 HTTP/1.1" 200 -
+2026-10-04 21:03:55.636 INFO  [aiservice.access] → #4c4138cf GET /health
+2026-10-04 21:03:55.636 DEBUG [aiservice.access] → #4c4138cf body {}
+2026-10-04 21:03:55.636 DEBUG [aiservice.access] → #4c4138cf 命中 health
+2026-10-04 21:03:55.663 INFO  [aiservice.access] ← #4c4138cf GET /health 200 27.2ms
+2026-10-04 21:03:55.663 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:04:50.408 INFO  [aiservice.access] → #8a59542e POST /api/prompt/analyze
+2026-10-04 21:04:50.409 DEBUG [aiservice.access] → #8a59542e body {"text":"三个月内减重 10 斤","user_id":"anonymous","use_llm":false}
+2026-10-04 21:04:50.409 DEBUG [aiservice.access] → #8a59542e 命中 analyze
+2026-10-04 21:04:50.416 INFO  [aiservice.prompt] analyze 规则引擎 | user=anonymous len=11 意图=new 领域=fitness 耗时=0.3ms
+2026-10-04 21:04:50.416 INFO  [aiservice.access] ← #8a59542e POST /api/prompt/analyze 200 7.9ms
+2026-10-04 21:04:50.416 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:04:50.419 INFO  [aiservice.access] → #aa4a4b04 POST /api/prompt/analyze
+2026-10-04 21:04:50.419 DEBUG [aiservice.access] → #aa4a4b04 body {"text":"年底前存下 5 万块","user_id":"anonymous","use_llm":true}
+2026-10-04 21:04:50.419 DEBUG [aiservice.access] → #aa4a4b04 命中 analyze
+2026-10-04 21:04:50.427 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=echo model=deepseek-chat len=10
+2026-10-04 21:04:50.427 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=0.2ms keys=category,criterion,goalTitle,intent,intentLabel,provider,suggestions,summary
+2026-10-04 21:04:50.427 INFO  [aiservice.access] ← #aa4a4b04 POST /api/prompt/analyze 200 7.7ms
+2026-10-04 21:04:50.427 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:04:50.428 INFO  [aiservice.access] → #60150ab1 GET /api/timeline?user_id=anonymous&days=7
+2026-10-04 21:04:50.428 DEBUG [aiservice.access] → #60150ab1 body {}
+2026-10-04 21:04:50.428 DEBUG [aiservice.access] → #60150ab1 命中 timeline
+2026-10-04 21:04:50.448 INFO  [aiservice.access] ← #60150ab1 GET /api/timeline 200 20.2ms
+2026-10-04 21:04:50.448 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=anonymous&days=7 HTTP/1.1" 200 -
+2026-10-04 21:04:50.449 INFO  [aiservice.access] → #5365b335 GET /health
+2026-10-04 21:04:50.449 DEBUG [aiservice.access] → #5365b335 body {}
+2026-10-04 21:04:50.449 DEBUG [aiservice.access] → #5365b335 命中 health
+2026-10-04 21:04:50.473 INFO  [aiservice.access] ← #5365b335 GET /health 200 24.3ms
+2026-10-04 21:04:50.473 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:04:50.486 INFO  [aiservice.access] → #094bc05f GET /api/logs?lines=8
+2026-10-04 21:04:50.486 DEBUG [aiservice.access] → #094bc05f 命中 logs
+2026-10-04 21:04:50.489 INFO  [aiservice.access] ← #094bc05f GET /api/logs 200 3.1ms
+2026-10-04 21:04:50.489 DEBUG [aiservice       ] 127.0.0.1 "GET /api/logs?lines=8 HTTP/1.1" 200 -
+2026-10-04 21:07:06.149 INFO  [aiservice.access] → #3cdcf60f POST /api/prompt/analyze
+2026-10-04 21:07:06.149 DEBUG [aiservice.access] → #3cdcf60f body {"text":"三个月内减重 10 斤","user_id":"anonymous","use_llm":false}
+2026-10-04 21:07:06.149 DEBUG [aiservice.access] → #3cdcf60f 命中 analyze
+2026-10-04 21:07:06.157 INFO  [aiservice.prompt] analyze 规则引擎 | user=anonymous len=11 意图=new 领域=fitness 耗时=0.7ms
+2026-10-04 21:07:06.157 INFO  [aiservice.access] ← #3cdcf60f POST /api/prompt/analyze 200 8.0ms
+2026-10-04 21:07:06.157 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:07:06.160 INFO  [aiservice.access] → #1fdd24cb POST /api/prompt/analyze
+2026-10-04 21:07:06.160 DEBUG [aiservice.access] → #1fdd24cb body {"text":"年底前存下 5 万块","user_id":"anonymous","use_llm":true}
+2026-10-04 21:07:06.160 DEBUG [aiservice.access] → #1fdd24cb 命中 analyze
+2026-10-04 21:07:06.169 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=echo model=deepseek-chat len=10
+2026-10-04 21:07:06.169 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=0.3ms keys=category,criterion,goalTitle,intent,intentLabel,provider,suggestions,summary
+2026-10-04 21:07:06.169 INFO  [aiservice.access] ← #1fdd24cb POST /api/prompt/analyze 200 8.7ms
+2026-10-04 21:07:06.169 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:07:06.170 INFO  [aiservice.access] → #d50f9a86 GET /api/timeline?user_id=anonymous&days=7
+2026-10-04 21:07:06.170 DEBUG [aiservice.access] → #d50f9a86 命中 timeline
+2026-10-04 21:07:06.188 INFO  [aiservice.access] ← #d50f9a86 GET /api/timeline 200 17.7ms
+2026-10-04 21:07:06.188 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=anonymous&days=7 HTTP/1.1" 200 -
+2026-10-04 21:07:06.189 INFO  [aiservice.access] → #46dc020b GET /health
+2026-10-04 21:07:06.189 DEBUG [aiservice.access] → #46dc020b 命中 health
+2026-10-04 21:07:06.213 INFO  [aiservice.access] ← #46dc020b GET /health 200 24.7ms
+2026-10-04 21:07:06.213 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:07:06.230 INFO  [aiservice.access] → #683415a5 GET /api/logs?lines=12
+2026-10-04 21:07:06.230 DEBUG [aiservice.access] → #683415a5 命中 logs
+2026-10-04 21:07:06.235 INFO  [aiservice.access] ← #683415a5 GET /api/logs 200 4.4ms
+2026-10-04 21:07:06.235 DEBUG [aiservice       ] 127.0.0.1 "GET /api/logs?lines=12 HTTP/1.1" 200 -
+2026-10-04 21:07:57.216 INFO  [aiservice.access] → #023c0e2e GET /health
+2026-10-04 21:07:57.217 DEBUG [aiservice.access] → #023c0e2e 命中 health
+2026-10-04 21:07:57.241 INFO  [aiservice.access] ← #023c0e2e GET /health 200 24.8ms
+2026-10-04 21:07:57.241 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:07:57.242 INFO  [aiservice.access] → #967d5e05 GET /api/info
+2026-10-04 21:07:57.242 DEBUG [aiservice.access] → #967d5e05 命中 info
+2026-10-04 21:07:57.242 INFO  [aiservice.access] ← #967d5e05 GET /api/info 200 0.1ms
+2026-10-04 21:07:57.242 DEBUG [aiservice       ] 127.0.0.1 "GET /api/info HTTP/1.1" 200 -
+2026-10-04 21:07:57.243 INFO  [aiservice.access] → #b8a0a497 GET /api/prompt/templates
+2026-10-04 21:07:57.243 DEBUG [aiservice.access] → #b8a0a497 命中 templates
+2026-10-04 21:07:57.243 INFO  [aiservice.access] ← #b8a0a497 GET /api/prompt/templates 200 0.1ms
+2026-10-04 21:07:57.243 DEBUG [aiservice       ] 127.0.0.1 "GET /api/prompt/templates HTTP/1.1" 200 -
+2026-10-04 21:07:57.243 INFO  [aiservice.access] → #de9b7e2a POST /api/prompt/render
+2026-10-04 21:07:57.243 DEBUG [aiservice.access] → #de9b7e2a body {"template": "analyze", "variables": {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd10\u65a4"}}
+2026-10-04 21:07:57.243 DEBUG [aiservice.access] → #de9b7e2a 命中 render
+2026-10-04 21:07:57.243 INFO  [aiservice.access] ← #de9b7e2a POST /api/prompt/render 200 0.1ms
+2026-10-04 21:07:57.243 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/render HTTP/1.1" 200 -
+2026-10-04 21:07:57.244 INFO  [aiservice.access] → #6b94e8c4 POST /api/prompt/analyze
+2026-10-04 21:07:57.244 DEBUG [aiservice.access] → #6b94e8c4 body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 21:07:57.244 DEBUG [aiservice.access] → #6b94e8c4 命中 analyze
+2026-10-04 21:07:57.245 INFO  [aiservice.prompt] analyze 规则引擎 | user=- len=11 意图=new 领域=fitness 耗时=1.1ms
+2026-10-04 21:07:57.245 INFO  [aiservice.access] ← #6b94e8c4 POST /api/prompt/analyze 200 1.2ms
+2026-10-04 21:07:57.245 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:07:57.245 INFO  [aiservice.access] → #f7920d26 POST /api/prompt/complete
+2026-10-04 21:07:57.245 DEBUG [aiservice.access] → #f7920d26 body {"template": "reframe", "variables": {"text": "\u6700\u8fd1\u53c8\u6ca1\u575a\u6301\u4e0b\u6765"}}
+2026-10-04 21:07:57.245 DEBUG [aiservice.access] → #f7920d26 命中 complete
+2026-10-04 21:07:57.245 INFO  [aiservice.prompt] complete | template=reframe provider=echo 输出 83 字 耗时=0.0ms
+2026-10-04 21:07:57.245 INFO  [aiservice.access] ← #f7920d26 POST /api/prompt/complete 200 0.1ms
+2026-10-04 21:07:57.245 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/complete HTTP/1.1" 200 -
+2026-10-04 21:07:57.246 INFO  [aiservice.access] → #1f363d54 POST /api/users
+2026-10-04 21:07:57.246 DEBUG [aiservice.access] → #1f363d54 body {"name": "\u81ea\u6d4b\u7528\u6237", "email": "selftest@timeline.dev"}
+2026-10-04 21:07:57.246 DEBUG [aiservice.access] → #1f363d54 命中 create
+2026-10-04 21:07:57.259 INFO  [aiservice.access] ← #1f363d54 POST /api/users 200 12.8ms
+2026-10-04 21:07:57.259 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users HTTP/1.1" 200 -
+2026-10-04 21:07:57.259 INFO  [aiservice.access] → #d5260573 GET /api/users
+2026-10-04 21:07:57.259 DEBUG [aiservice.access] → #d5260573 命中 index
+2026-10-04 21:07:57.314 INFO  [aiservice.access] ← #d5260573 GET /api/users 200 55.1ms
+2026-10-04 21:07:57.315 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users HTTP/1.1" 200 -
+2026-10-04 21:07:57.315 INFO  [aiservice.access] → #b723369f GET /api/users/u_b476d5a7fba7
+2026-10-04 21:07:57.315 DEBUG [aiservice.access] → #b723369f 命中 detail
+2026-10-04 21:07:57.323 INFO  [aiservice.access] ← #b723369f GET /api/users/u_b476d5a7fba7 200 7.7ms
+2026-10-04 21:07:57.323 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.324 INFO  [aiservice.access] → #39d9ed93 PATCH /api/users/u_b476d5a7fba7
+2026-10-04 21:07:57.324 DEBUG [aiservice.access] → #39d9ed93 body {"name": "\u81ea\u6d4b\u7528\u6237\u6539\u540d"}
+2026-10-04 21:07:57.324 DEBUG [aiservice.access] → #39d9ed93 命中 update
+2026-10-04 21:07:57.344 INFO  [aiservice.access] ← #39d9ed93 PATCH /api/users/u_b476d5a7fba7 200 19.9ms
+2026-10-04 21:07:57.344 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/users/u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.344 INFO  [aiservice.access] → #8abc8888 POST /api/timeline/ingest?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.344 DEBUG [aiservice.access] → #8abc8888 body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 21:07:57.344 DEBUG [aiservice.access] → #8abc8888 命中 ingest
+2026-10-04 21:07:57.351 INFO  [aiservice.goal  ] ingest | user=u_b476d5a7fba7 新建 目标=三个月内减重 10 斤 意图=new 分数=0.00 目标数=1
+2026-10-04 21:07:57.392 INFO  [aiservice.access] ← #8abc8888 POST /api/timeline/ingest 200 47.4ms
+2026-10-04 21:07:57.392 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.393 INFO  [aiservice.access] → #ec42c90b POST /api/timeline/ingest?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.393 DEBUG [aiservice.access] → #ec42c90b body {"text": "\u4eca\u5929\u8dd1\u4e86 3 \u516c\u91cc"}
+2026-10-04 21:07:57.393 DEBUG [aiservice.access] → #ec42c90b 命中 ingest
+2026-10-04 21:07:57.399 INFO  [aiservice.goal  ] ingest | user=u_b476d5a7fba7 归拢 目标=三个月内减重 10 斤 意图=progress 分数=0.50 目标数=1
+2026-10-04 21:07:57.410 INFO  [aiservice.access] ← #ec42c90b POST /api/timeline/ingest 200 17.8ms
+2026-10-04 21:07:57.410 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.411 INFO  [aiservice.access] → #17cf3bac POST /api/timeline/goals/g_05e89003d2a3/actions?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.411 DEBUG [aiservice.access] → #17cf3bac body {"actions": [{"title": "\u8dd1 3 \u516c\u91cc", "tip": "\u914d\u901f\u968f\u610f\uff0c\u8dd1\u5b8c\u5c31\u884c", "minutes": 30}]}
+2026-10-04 21:07:57.411 DEBUG [aiservice.access] → #17cf3bac 命中 add_action
+2026-10-04 21:07:57.428 INFO  [aiservice.access] ← #17cf3bac POST /api/timeline/goals/g_05e89003d2a3/actions 200 16.5ms
+2026-10-04 21:07:57.428 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/goals/g_05e89003d2a3/actions?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.428 INFO  [aiservice.access] → #dc947869 GET /api/timeline?user_id=u_b476d5a7fba7&days=7
+2026-10-04 21:07:57.428 DEBUG [aiservice.access] → #dc947869 命中 timeline
+2026-10-04 21:07:57.444 INFO  [aiservice.access] ← #dc947869 GET /api/timeline 200 16.0ms
+2026-10-04 21:07:57.444 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=u_b476d5a7fba7&days=7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.445 INFO  [aiservice.access] → #0eb8bd5a PATCH /api/timeline/tasks/t_bae9633b8f02?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.445 DEBUG [aiservice.access] → #0eb8bd5a body {"record_id": "r_3d04298c66d1", "done": true}
+2026-10-04 21:07:57.445 DEBUG [aiservice.access] → #0eb8bd5a 命中 toggle_task
+2026-10-04 21:07:57.450 INFO  [aiservice.timeline] 勾选任务 | user=u_b476d5a7fba7 task=t_bae9633b8f02 done=True 记录进度=100%
+2026-10-04 21:07:57.461 INFO  [aiservice.access] ← #0eb8bd5a PATCH /api/timeline/tasks/t_bae9633b8f02 200 15.7ms
+2026-10-04 21:07:57.461 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/timeline/tasks/t_bae9633b8f02?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.462 INFO  [aiservice.access] → #d8e023c1 POST /api/timeline/sync?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.462 DEBUG [aiservice.access] → #d8e023c1 命中 sync
+2026-10-04 21:07:57.479 INFO  [aiservice.access] ← #d8e023c1 POST /api/timeline/sync 200 17.3ms
+2026-10-04 21:07:57.479 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/sync?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.480 INFO  [aiservice.access] → #0e0be9f8 GET /api/timeline/stats?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.480 DEBUG [aiservice.access] → #0e0be9f8 命中 stats
+2026-10-04 21:07:57.495 INFO  [aiservice.access] ← #0e0be9f8 GET /api/timeline/stats 200 15.3ms
+2026-10-04 21:07:57.495 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/stats?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.496 INFO  [aiservice.access] → #8d244431 GET /api/timeline/goals?user_id=u_b476d5a7fba7
+2026-10-04 21:07:57.496 DEBUG [aiservice.access] → #8d244431 命中 goals
+2026-10-04 21:07:57.511 INFO  [aiservice.access] ← #8d244431 GET /api/timeline/goals 200 15.0ms
+2026-10-04 21:07:57.511 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/goals?user_id=u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:07:57.511 INFO  [aiservice.access] → #47f5aee0 GET /api/users/u_b476d5a7fba7/export
+2026-10-04 21:07:57.511 DEBUG [aiservice.access] → #47f5aee0 命中 export
+2026-10-04 21:07:57.516 INFO  [aiservice.access] ← #47f5aee0 GET /api/users/u_b476d5a7fba7/export 200 4.7ms
+2026-10-04 21:07:57.516 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_b476d5a7fba7/export HTTP/1.1" 200 -
+2026-10-04 21:07:57.517 INFO  [aiservice.access] → #31bed8af POST /api/users/u_b476d5a7fba7/import
+2026-10-04 21:07:57.517 DEBUG [aiservice.access] → #31bed8af body {"goals": [{"id": "g_05e89003d2a3", "title": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4", "criterion": "\u57283\u4e2a \u00b7 3\u4e2a\u6708\u4e4b\u5185\uff0c\u6211\u80fd\u660e\u786e\u8bf4\u51fa\u5b83\u5df2\u7ecf\u5b8c\u6210\u4e86", "categoryKey": "fitness", "categoryName": "\u5065\u5eb7\u5851\u5 …(+1675)
+2026-10-04 21:07:57.517 DEBUG [aiservice.access] → #31bed8af 命中 import_data
+2026-10-04 21:07:57.532 INFO  [aiservice.access] ← #31bed8af POST /api/users/u_b476d5a7fba7/import 200 15.4ms
+2026-10-04 21:07:57.532 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users/u_b476d5a7fba7/import HTTP/1.1" 200 -
+2026-10-04 21:07:57.533 INFO  [aiservice.access] → #405fc8f1 GET /api/state
+2026-10-04 21:07:57.533 DEBUG [aiservice.access] → #405fc8f1 命中 pull
+2026-10-04 21:07:57.533 WARNING [aiservice.access] ← #405fc8f1 GET /api/state 业务异常 401: 缺少 Bearer token（调试可加 ?user_id=xxx）
+2026-10-04 21:07:57.533 INFO  [aiservice.access] ← #405fc8f1 GET /api/state 401 0.1ms
+2026-10-04 21:07:57.533 DEBUG [aiservice       ] 127.0.0.1 "GET /api/state HTTP/1.1" 401 -
+2026-10-04 21:07:57.533 INFO  [aiservice.access] → #8bb62c44 PUT /api/state?user_id=legacy_demo
+2026-10-04 21:07:57.533 DEBUG [aiservice.access] → #8bb62c44 body {"goals": [], "records": []}
+2026-10-04 21:07:57.533 DEBUG [aiservice.access] → #8bb62c44 命中 push
+2026-10-04 21:07:57.550 INFO  [aiservice.access] ← #8bb62c44 PUT /api/state 200 17.1ms
+2026-10-04 21:07:57.550 DEBUG [aiservice       ] 127.0.0.1 "PUT /api/state?user_id=legacy_demo HTTP/1.1" 200 -
+2026-10-04 21:07:57.551 INFO  [aiservice.access] → #b2fd2a5c DELETE /api/users/u_b476d5a7fba7
+2026-10-04 21:07:57.551 DEBUG [aiservice.access] → #b2fd2a5c 命中 remove
+2026-10-04 21:07:57.587 INFO  [aiservice.access] ← #b2fd2a5c DELETE /api/users/u_b476d5a7fba7 200 36.5ms
+2026-10-04 21:07:57.588 DEBUG [aiservice       ] 127.0.0.1 "DELETE /api/users/u_b476d5a7fba7 HTTP/1.1" 200 -
+2026-10-04 21:28:59.778 INFO  [aiservice.access] → #a360afcf GET /api/info
+2026-10-04 21:28:59.778 DEBUG [aiservice.access] → #a360afcf 命中 info
+2026-10-04 21:28:59.779 INFO  [aiservice.access] ← #a360afcf GET /api/info 200 1.2ms
+2026-10-04 21:28:59.779 DEBUG [aiservice       ] 127.0.0.1 "GET /api/info HTTP/1.1" 200 -
+2026-10-04 21:28:59.880 INFO  [aiservice.access] → #c7847724 GET /favicon.ico
+2026-10-04 21:28:59.880 WARNING [aiservice.access] ← #c7847724 GET /favicon.ico 业务异常 404: 没有这个接口: GET /favicon.ico
+2026-10-04 21:28:59.880 INFO  [aiservice.access] ← #c7847724 GET /favicon.ico 404 0.8ms
+2026-10-04 21:28:59.880 DEBUG [aiservice       ] 127.0.0.1 "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-04 21:30:23.285 INFO  [aiservice.access] → #e27ccd3b POST /api/prompt/analyze
+2026-10-04 21:30:23.285 DEBUG [aiservice.access] → #e27ccd3b body {"text":"hello","user_id":"anonymous","use_llm":true}
+2026-10-04 21:30:23.285 DEBUG [aiservice.access] → #e27ccd3b 命中 analyze
+2026-10-04 21:30:23.288 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=echo model=deepseek-chat len=5
+2026-10-04 21:30:23.290 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=1.3ms keys=category,criterion,goalTitle,intent,intentLabel,provider,suggestions,summary
+2026-10-04 21:30:23.290 INFO  [aiservice.access] ← #e27ccd3b POST /api/prompt/analyze 200 5.8ms
+2026-10-04 21:30:23.290 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:31:00.132 INFO  [aiservice.access] → #62343fac POST /api/prompt/analyze
+2026-10-04 21:31:00.132 DEBUG [aiservice.access] → #62343fac body {"text":"what","user_id":"anonymous","use_llm":true}
+2026-10-04 21:31:00.132 DEBUG [aiservice.access] → #62343fac 命中 analyze
+2026-10-04 21:31:00.133 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=echo model=deepseek-chat len=4
+2026-10-04 21:31:00.133 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=0.2ms keys=category,criterion,goalTitle,intent,intentLabel,provider,suggestions,summary
+2026-10-04 21:31:00.133 INFO  [aiservice.access] ← #62343fac POST /api/prompt/analyze 200 1.3ms
+2026-10-04 21:31:00.133 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:40:43.668 INFO  [aiservice.access] → #abe348e1 GET /health
+2026-10-04 21:40:43.669 DEBUG [aiservice.access] → #abe348e1 命中 health
+2026-10-04 21:40:43.703 INFO  [aiservice.access] ← #abe348e1 GET /health 200 34.8ms
+2026-10-04 21:40:43.703 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:40:51.248 INFO  [aiservice.access] → #5872215e POST /api/prompt/analyze
+2026-10-04 21:40:51.248 DEBUG [aiservice.access] → #5872215e body {"user_id":"u_demo","text":"三个月内减重 10 斤","use_llm":true}
+2026-10-04 21:40:51.248 DEBUG [aiservice.access] → #5872215e 命中 analyze
+2026-10-04 21:40:51.251 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 21:41:12.015 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=20762.4ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 21:41:12.022 INFO  [aiservice.access] ← #5872215e POST /api/prompt/analyze 200 20773.9ms
+2026-10-04 21:41:12.022 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:43:49.520 INFO  [aiservice.access] → #76ec88d1 GET /health
+2026-10-04 21:43:49.520 DEBUG [aiservice.access] → #76ec88d1 命中 health
+2026-10-04 21:43:49.554 INFO  [aiservice.access] ← #76ec88d1 GET /health 200 34.0ms
+2026-10-04 21:43:49.554 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:43:49.567 INFO  [aiservice.access] → #41ab31ff POST /api/prompt/analyze
+2026-10-04 21:43:49.568 DEBUG [aiservice.access] → #41ab31ff body {"user_id":"u_demo","text":"三个月内减重 10 斤","use_llm":true}
+2026-10-04 21:43:49.568 DEBUG [aiservice.access] → #41ab31ff 命中 analyze
+2026-10-04 21:43:49.571 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 21:44:16.309 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=26737.4ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 21:44:16.309 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "progress", "intentLabel": "减重目标进度", "category": "fitness", "summary": "用户设定了三个月内减重10斤的减重目标", "goalTitle": "三个月减重10斤计划", "criterion": "达成标准是三个月内实际体重减少10斤", "suggestions": [{"title": "每日计步", "tip": "每天走步增加消耗", "minutes": 30}, {"title": "饮食控糖", "tip": "减少高热量食物", "minutes": 20}, {"title": "每周训练", "tip": "坚持力量训练", "minutes": 45}]}
+2026-10-04 21:44:16.311 INFO  [aiservice.access] ← #41ab31ff POST /api/prompt/analyze 200 26743.5ms
+2026-10-04 21:44:16.311 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:44:35.371 INFO  [aiservice.access] → #cf74f9e4 POST /api/prompt/analyze
+2026-10-04 21:44:35.372 DEBUG [aiservice.access] → #cf74f9e4 body {"user_id":"u_demo","text":"这周又在加班，英语单词一个都没背，感觉坚持不下去了","use_llm":true}
+2026-10-04 21:44:35.372 DEBUG [aiservice.access] → #cf74f9e4 命中 analyze
+2026-10-04 21:44:35.375 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=25
+2026-10-04 21:45:19.477 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=44101.8ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 21:45:19.478 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "setback", "intentLabel": "学习坚持力下降", "category": "study", "summary": "用户本周加班多，英语单词未背，感到坚持力下降", "goalTitle": "恢复英语学习习惯", "criterion": "每日背诵10个单词，连续5天完成", "suggestions": [{"title": "制定每日学习计划", "tip": "明确时间和目标，减少拖延", "minutes": 15}, {"title": "增加学习时间", "tip": "利用加班间隙复习单词", "minutes": 20}, {"title": "使用记忆技巧", "tip": "联想记忆法加深记忆", "minutes": 10}]}
+2026-10-04 21:45:19.480 INFO  [aiservice.access] ← #cf74f9e4 POST /api/prompt/analyze 200 44108.3ms
+2026-10-04 21:45:19.480 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:46:46.617 INFO  [aiservice.access] → #63f1e792 POST /api/prompt/analyze
+2026-10-04 21:46:46.617 DEBUG [aiservice.access] → #63f1e792 body {"text":"今天又存了 2000 元","user_id":"anonymous","use_llm":false}
+2026-10-04 21:46:46.617 DEBUG [aiservice.access] → #63f1e792 命中 analyze
+2026-10-04 21:46:46.631 INFO  [aiservice.prompt] analyze 规则引擎 | user=anonymous len=12 意图=progress 领域=money 耗时=0.5ms
+2026-10-04 21:46:46.631 INFO  [aiservice.access] ← #63f1e792 POST /api/prompt/analyze 200 14.8ms
+2026-10-04 21:46:46.631 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:48:17.991 INFO  [aiservice.access] → #efb1f948 GET /health
+2026-10-04 21:48:17.992 DEBUG [aiservice.access] → #efb1f948 命中 health
+2026-10-04 21:48:18.014 INFO  [aiservice.access] ← #efb1f948 GET /health 200 22.8ms
+2026-10-04 21:48:18.014 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 21:48:18.015 INFO  [aiservice.access] → #0fdf9f51 GET /api/info
+2026-10-04 21:48:18.015 DEBUG [aiservice.access] → #0fdf9f51 命中 info
+2026-10-04 21:48:18.015 INFO  [aiservice.access] ← #0fdf9f51 GET /api/info 200 0.1ms
+2026-10-04 21:48:18.015 DEBUG [aiservice       ] 127.0.0.1 "GET /api/info HTTP/1.1" 200 -
+2026-10-04 21:48:18.016 INFO  [aiservice.access] → #ec8664cf GET /api/prompt/templates
+2026-10-04 21:48:18.016 DEBUG [aiservice.access] → #ec8664cf 命中 templates
+2026-10-04 21:48:18.016 INFO  [aiservice.access] ← #ec8664cf GET /api/prompt/templates 200 0.1ms
+2026-10-04 21:48:18.016 DEBUG [aiservice       ] 127.0.0.1 "GET /api/prompt/templates HTTP/1.1" 200 -
+2026-10-04 21:48:18.016 INFO  [aiservice.access] → #a7fe4c72 POST /api/prompt/render
+2026-10-04 21:48:18.016 DEBUG [aiservice.access] → #a7fe4c72 body {"template": "analyze", "variables": {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd10\u65a4"}}
+2026-10-04 21:48:18.016 DEBUG [aiservice.access] → #a7fe4c72 命中 render
+2026-10-04 21:48:18.016 INFO  [aiservice.access] ← #a7fe4c72 POST /api/prompt/render 200 0.1ms
+2026-10-04 21:48:18.016 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/render HTTP/1.1" 200 -
+2026-10-04 21:48:18.017 INFO  [aiservice.access] → #91693abe POST /api/prompt/analyze
+2026-10-04 21:48:18.017 DEBUG [aiservice.access] → #91693abe body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 21:48:18.017 DEBUG [aiservice.access] → #91693abe 命中 analyze
+2026-10-04 21:48:18.017 INFO  [aiservice.prompt] analyze 规则引擎 | user=- len=11 意图=new 领域=fitness 耗时=0.4ms
+2026-10-04 21:48:18.017 INFO  [aiservice.access] ← #91693abe POST /api/prompt/analyze 200 0.5ms
+2026-10-04 21:48:18.017 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:48:18.018 INFO  [aiservice.access] → #eecb31bb POST /api/prompt/complete
+2026-10-04 21:48:18.018 DEBUG [aiservice.access] → #eecb31bb body {"template": "reframe", "variables": {"text": "\u6700\u8fd1\u53c8\u6ca1\u575a\u6301\u4e0b\u6765"}}
+2026-10-04 21:48:18.018 DEBUG [aiservice.access] → #eecb31bb 命中 complete
+2026-10-04 21:48:18.018 INFO  [aiservice.prompt] complete | template=reframe provider=echo 输出 83 字 耗时=0.0ms
+2026-10-04 21:48:18.018 INFO  [aiservice.access] ← #eecb31bb POST /api/prompt/complete 200 0.1ms
+2026-10-04 21:48:18.018 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/complete HTTP/1.1" 200 -
+2026-10-04 21:48:18.018 INFO  [aiservice.access] → #97f85af2 POST /api/users
+2026-10-04 21:48:18.018 DEBUG [aiservice.access] → #97f85af2 body {"name": "\u81ea\u6d4b\u7528\u6237", "email": "selftest@timeline.dev"}
+2026-10-04 21:48:18.018 DEBUG [aiservice.access] → #97f85af2 命中 create
+2026-10-04 21:48:18.030 INFO  [aiservice.access] ← #97f85af2 POST /api/users 200 11.4ms
+2026-10-04 21:48:18.030 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users HTTP/1.1" 200 -
+2026-10-04 21:48:18.031 INFO  [aiservice.access] → #a5f89071 GET /api/users
+2026-10-04 21:48:18.031 DEBUG [aiservice.access] → #a5f89071 命中 index
+2026-10-04 21:48:18.079 INFO  [aiservice.access] ← #a5f89071 GET /api/users 200 48.7ms
+2026-10-04 21:48:18.079 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users HTTP/1.1" 200 -
+2026-10-04 21:48:18.080 INFO  [aiservice.access] → #10bfb95b GET /api/users/u_5f0e2beb4dbf
+2026-10-04 21:48:18.080 DEBUG [aiservice.access] → #10bfb95b 命中 detail
+2026-10-04 21:48:18.087 INFO  [aiservice.access] ← #10bfb95b GET /api/users/u_5f0e2beb4dbf 200 7.0ms
+2026-10-04 21:48:18.087 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.088 INFO  [aiservice.access] → #c344230d PATCH /api/users/u_5f0e2beb4dbf
+2026-10-04 21:48:18.088 DEBUG [aiservice.access] → #c344230d body {"name": "\u81ea\u6d4b\u7528\u6237\u6539\u540d"}
+2026-10-04 21:48:18.088 DEBUG [aiservice.access] → #c344230d 命中 update
+2026-10-04 21:48:18.110 INFO  [aiservice.access] ← #c344230d PATCH /api/users/u_5f0e2beb4dbf 200 22.6ms
+2026-10-04 21:48:18.111 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/users/u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.111 INFO  [aiservice.access] → #9064fa53 POST /api/timeline/ingest?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.111 DEBUG [aiservice.access] → #9064fa53 body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 21:48:18.111 DEBUG [aiservice.access] → #9064fa53 命中 ingest
+2026-10-04 21:48:18.116 INFO  [aiservice.goal  ] ingest | user=u_5f0e2beb4dbf 新建 目标=三个月内减重 10 斤 意图=new 分数=0.00 目标数=1
+2026-10-04 21:48:18.127 INFO  [aiservice.access] ← #9064fa53 POST /api/timeline/ingest 200 15.9ms
+2026-10-04 21:48:18.127 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.128 INFO  [aiservice.access] → #c3a58396 POST /api/timeline/ingest?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.128 DEBUG [aiservice.access] → #c3a58396 body {"text": "\u4eca\u5929\u8dd1\u4e86 3 \u516c\u91cc"}
+2026-10-04 21:48:18.128 DEBUG [aiservice.access] → #c3a58396 命中 ingest
+2026-10-04 21:48:18.134 INFO  [aiservice.goal  ] ingest | user=u_5f0e2beb4dbf 归拢 目标=三个月内减重 10 斤 意图=progress 分数=0.50 目标数=1
+2026-10-04 21:48:18.147 INFO  [aiservice.access] ← #c3a58396 POST /api/timeline/ingest 200 19.1ms
+2026-10-04 21:48:18.147 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.148 INFO  [aiservice.access] → #181486ed POST /api/timeline/goals/g_aaf72f250f26/actions?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.148 DEBUG [aiservice.access] → #181486ed body {"actions": [{"title": "\u8dd1 3 \u516c\u91cc", "tip": "\u914d\u901f\u968f\u610f\uff0c\u8dd1\u5b8c\u5c31\u884c", "minutes": 30}]}
+2026-10-04 21:48:18.148 DEBUG [aiservice.access] → #181486ed 命中 add_action
+2026-10-04 21:48:18.163 INFO  [aiservice.access] ← #181486ed POST /api/timeline/goals/g_aaf72f250f26/actions 200 15.4ms
+2026-10-04 21:48:18.163 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/goals/g_aaf72f250f26/actions?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.164 INFO  [aiservice.access] → #35e146db GET /api/timeline?user_id=u_5f0e2beb4dbf&days=7
+2026-10-04 21:48:18.164 DEBUG [aiservice.access] → #35e146db 命中 timeline
+2026-10-04 21:48:18.179 INFO  [aiservice.access] ← #35e146db GET /api/timeline 200 15.3ms
+2026-10-04 21:48:18.179 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=u_5f0e2beb4dbf&days=7 HTTP/1.1" 200 -
+2026-10-04 21:48:18.180 INFO  [aiservice.access] → #ea628173 PATCH /api/timeline/tasks/t_798a35cc8839?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.180 DEBUG [aiservice.access] → #ea628173 body {"record_id": "r_4c8e34b8432f", "done": true}
+2026-10-04 21:48:18.180 DEBUG [aiservice.access] → #ea628173 命中 toggle_task
+2026-10-04 21:48:18.184 INFO  [aiservice.timeline] 勾选任务 | user=u_5f0e2beb4dbf task=t_798a35cc8839 done=True 记录进度=100%
+2026-10-04 21:48:18.195 INFO  [aiservice.access] ← #ea628173 PATCH /api/timeline/tasks/t_798a35cc8839 200 15.5ms
+2026-10-04 21:48:18.195 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/timeline/tasks/t_798a35cc8839?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.196 INFO  [aiservice.access] → #d8b8ada2 POST /api/timeline/sync?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.196 DEBUG [aiservice.access] → #d8b8ada2 命中 sync
+2026-10-04 21:48:18.211 INFO  [aiservice.access] ← #d8b8ada2 POST /api/timeline/sync 200 15.1ms
+2026-10-04 21:48:18.211 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/sync?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.212 INFO  [aiservice.access] → #b890bb27 GET /api/timeline/stats?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.212 DEBUG [aiservice.access] → #b890bb27 命中 stats
+2026-10-04 21:48:18.229 INFO  [aiservice.access] ← #b890bb27 GET /api/timeline/stats 200 17.5ms
+2026-10-04 21:48:18.229 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/stats?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.230 INFO  [aiservice.access] → #4c8267f7 GET /api/timeline/goals?user_id=u_5f0e2beb4dbf
+2026-10-04 21:48:18.230 DEBUG [aiservice.access] → #4c8267f7 命中 goals
+2026-10-04 21:48:18.245 INFO  [aiservice.access] ← #4c8267f7 GET /api/timeline/goals 200 15.5ms
+2026-10-04 21:48:18.245 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/goals?user_id=u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:18.246 INFO  [aiservice.access] → #2982fee8 GET /api/users/u_5f0e2beb4dbf/export
+2026-10-04 21:48:18.246 DEBUG [aiservice.access] → #2982fee8 命中 export
+2026-10-04 21:48:18.251 INFO  [aiservice.access] ← #2982fee8 GET /api/users/u_5f0e2beb4dbf/export 200 4.7ms
+2026-10-04 21:48:18.251 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_5f0e2beb4dbf/export HTTP/1.1" 200 -
+2026-10-04 21:48:18.252 INFO  [aiservice.access] → #0103da40 POST /api/users/u_5f0e2beb4dbf/import
+2026-10-04 21:48:18.252 DEBUG [aiservice.access] → #0103da40 body {"goals": [{"id": "g_aaf72f250f26", "title": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4", "criterion": "\u57283\u4e2a \u00b7 3\u4e2a\u6708\u4e4b\u5185\uff0c\u6211\u80fd\u660e\u786e\u8bf4\u51fa\u5b83\u5df2\u7ecf\u5b8c\u6210\u4e86", "categoryKey": "fitness", "categoryName": "\u5065\u5eb7\u5851\u5 …(+1675)
+2026-10-04 21:48:18.252 DEBUG [aiservice.access] → #0103da40 命中 import_data
+2026-10-04 21:48:18.268 INFO  [aiservice.access] ← #0103da40 POST /api/users/u_5f0e2beb4dbf/import 200 16.7ms
+2026-10-04 21:48:18.268 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users/u_5f0e2beb4dbf/import HTTP/1.1" 200 -
+2026-10-04 21:48:18.269 INFO  [aiservice.access] → #c41a74cc GET /api/state
+2026-10-04 21:48:18.269 DEBUG [aiservice.access] → #c41a74cc 命中 pull
+2026-10-04 21:48:18.269 WARNING [aiservice.access] ← #c41a74cc GET /api/state 业务异常 401: 缺少 Bearer token（调试可加 ?user_id=xxx）
+2026-10-04 21:48:18.269 INFO  [aiservice.access] ← #c41a74cc GET /api/state 401 0.1ms
+2026-10-04 21:48:18.269 DEBUG [aiservice       ] 127.0.0.1 "GET /api/state HTTP/1.1" 401 -
+2026-10-04 21:48:18.269 INFO  [aiservice.access] → #6768ace3 PUT /api/state?user_id=legacy_demo
+2026-10-04 21:48:18.269 DEBUG [aiservice.access] → #6768ace3 body {"goals": [], "records": []}
+2026-10-04 21:48:18.269 DEBUG [aiservice.access] → #6768ace3 命中 push
+2026-10-04 21:48:18.291 INFO  [aiservice.access] ← #6768ace3 PUT /api/state 200 21.2ms
+2026-10-04 21:48:18.291 DEBUG [aiservice       ] 127.0.0.1 "PUT /api/state?user_id=legacy_demo HTTP/1.1" 200 -
+2026-10-04 21:48:18.292 INFO  [aiservice.access] → #21c64216 DELETE /api/users/u_5f0e2beb4dbf
+2026-10-04 21:48:18.292 DEBUG [aiservice.access] → #21c64216 命中 remove
+2026-10-04 21:48:18.332 INFO  [aiservice.access] ← #21c64216 DELETE /api/users/u_5f0e2beb4dbf 200 40.4ms
+2026-10-04 21:48:18.332 DEBUG [aiservice       ] 127.0.0.1 "DELETE /api/users/u_5f0e2beb4dbf HTTP/1.1" 200 -
+2026-10-04 21:48:31.253 INFO  [aiservice.access] → #15a45912 POST /api/prompt/analyze
+2026-10-04 21:48:31.253 DEBUG [aiservice.access] → #15a45912 body {"text":"三个月内减重 10 斤","user_id":"anonymous","use_llm":true}
+2026-10-04 21:48:31.253 DEBUG [aiservice.access] → #15a45912 命中 analyze
+2026-10-04 21:48:31.259 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 21:49:18.257 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=46997.6ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 21:49:18.258 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "new", "intentLabel": "新目标", "category": "fitness", "summary": "用户设定了三个月内减重10斤的减重目标。", "goalTitle": "三个月减重10斤", "criterion": "目标达成标准为三个月内减重10斤", "suggestions": [{"title": "增加有氧运动", "tip": "每周至少3次30分钟有氧运动有助于燃脂", "minutes": 30}, {"title": "控制饮食", "tip": "减少高热量食物，增加蛋白质和蔬菜摄入", "minutes": 15}]}
+2026-10-04 21:49:18.274 INFO  [aiservice.access] ← #15a45912 POST /api/prompt/analyze 200 47021.6ms
+2026-10-04 21:49:18.275 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:49:18.321 INFO  [aiservice.access] → #2af8883e POST /api/prompt/analyze
+2026-10-04 21:49:18.321 DEBUG [aiservice.access] → #2af8883e body {"text":"年底前存下 5 万块","user_id":"anonymous","use_llm":true}
+2026-10-04 21:49:18.321 DEBUG [aiservice.access] → #2af8883e 命中 analyze
+2026-10-04 21:49:18.351 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=10
+2026-10-04 21:51:18.362 ERROR [aiservice       ] ← #2af8883e 未捕获异常: POST /api/prompt/analyze
+Traceback (most recent call last):
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/core/server.py", line 80, in _dispatch
+    result = route.handler(req, **params)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/api/prompt.py", line 25, in analyze
+    return prompt_service.analyze(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        body.get("text", ""),
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        provider=body.get("provider"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/services/prompt_service.py", line 62, in analyze
+    data = llm.complete_json(rendered["system"], rendered["user"], provider=provider)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/__init__.py", line 32, in complete_json
+    return get_provider(provider).complete_json(system, user, **kw)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/base.py", line 14, in complete_json
+    text = self.complete(system, user, expect_json=True, **kw)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/openai_compatible.py", line 54, in complete
+    with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+2026-10-04 21:51:18.425 INFO  [aiservice.access] ← #2af8883e POST /api/prompt/analyze 500 120103.8ms
+2026-10-04 21:51:18.425 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 500 -
+2026-10-04 21:51:29.574 INFO  [aiservice.access] → #bbe66ab4 POST /api/prompt/analyze
+2026-10-04 21:51:29.575 DEBUG [aiservice.access] → #bbe66ab4 body {"text":"nihao","user_id":"anonymous","use_llm":true}
+2026-10-04 21:51:29.575 DEBUG [aiservice.access] → #bbe66ab4 命中 analyze
+2026-10-04 21:51:29.607 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=5
+2026-10-04 21:53:29.616 ERROR [aiservice       ] ← #bbe66ab4 未捕获异常: POST /api/prompt/analyze
+Traceback (most recent call last):
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/core/server.py", line 80, in _dispatch
+    result = route.handler(req, **params)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/api/prompt.py", line 25, in analyze
+    return prompt_service.analyze(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        body.get("text", ""),
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        provider=body.get("provider"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/services/prompt_service.py", line 62, in analyze
+    data = llm.complete_json(rendered["system"], rendered["user"], provider=provider)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/__init__.py", line 32, in complete_json
+    return get_provider(provider).complete_json(system, user, **kw)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/base.py", line 14, in complete_json
+    text = self.complete(system, user, expect_json=True, **kw)
+  File "/Users/williamleon/Desktop/ducky/timeline-miniprogram/aiservice/app/llm/openai_compatible.py", line 54, in complete
+    with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/williamleon/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+2026-10-04 21:53:29.624 INFO  [aiservice.access] ← #bbe66ab4 POST /api/prompt/analyze 500 120049.6ms
+2026-10-04 21:53:29.624 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 500 -
+2026-10-04 21:56:10.662 INFO  [aiservice.access] → #91c84eb3 POST /api/prompt/analyze
+2026-10-04 21:56:10.663 DEBUG [aiservice.access] → #91c84eb3 body {"user_id": "u_demo", "text": "三个月内减重 10 斤", "use_llm": true}
+2026-10-04 21:56:10.664 DEBUG [aiservice.access] → #91c84eb3 命中 analyze
+2026-10-04 21:56:10.670 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 21:57:23.519 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=72850.2ms keys=raw
+2026-10-04 21:57:23.521 DEBUG [aiservice.prompt] analyze 原始输出 | {"raw": "{\n  \"intent\": \"new\",\n  \"intentLabel\": \"减重\",\n  \"category\": \"fitness\",\n  \"summary\": \"用户设定了三个月内减重10斤的减重目标。\",\n  \"goalTitle\": \"三个月内减重10斤\",\n  \"criterion\": \"达标标准为三个月内减重10斤\",\n  \"suggestions\": [\n    {\n      \"title\": \"制定每日饮食计划\",\n      \"tip\": \"控制热量摄入，减少高热量食物\",\n      \"minutes\": 15\n    },\n    {\n      \"title\": \"增加每日运动时间"}
+2026-10-04 21:57:23.521 WARNING [aiservice.prompt] analyze 模型输出无效（返回的不是合法 JSON），回退本地规则 | user=u_demo provider=openai
+2026-10-04 21:57:23.522 INFO  [aiservice.access] ← #91c84eb3 POST /api/prompt/analyze 200 72860.9ms
+2026-10-04 21:57:23.522 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:57:23.729 INFO  [aiservice.access] → #99a8bd89 POST /api/prompt/analyze
+2026-10-04 21:57:23.729 DEBUG [aiservice.access] → #99a8bd89 body {"user_id": "u_demo", "text": "年底前存下 5 万块", "use_llm": true}
+2026-10-04 21:57:23.729 DEBUG [aiservice.access] → #99a8bd89 命中 analyze
+2026-10-04 21:57:23.758 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=10
+2026-10-04 21:58:36.531 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=72774.6ms keys=raw
+2026-10-04 21:58:36.532 DEBUG [aiservice.prompt] analyze 原始输出 | {"raw": ""}
+2026-10-04 21:58:36.532 WARNING [aiservice.prompt] analyze 模型输出无效（返回的不是合法 JSON），回退本地规则 | user=u_demo provider=openai
+2026-10-04 21:58:36.532 INFO  [aiservice.access] ← #99a8bd89 POST /api/prompt/analyze 200 72803.8ms
+2026-10-04 21:58:36.533 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 21:58:36.652 INFO  [aiservice.access] → #5f6fe2ea POST /api/prompt/analyze
+2026-10-04 21:58:36.652 DEBUG [aiservice.access] → #5f6fe2ea body {"user_id": "u_demo", "text": "这周又在加班，英语单词一个都没背，感觉坚持不下去了", "use_llm": true}
+2026-10-04 21:58:36.652 DEBUG [aiservice.access] → #5f6fe2ea 命中 analyze
+2026-10-04 21:58:36.668 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=25
+2026-10-04 21:59:16.445 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=39776.5ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 21:59:16.446 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "setback", "intentLabel": "坚持力不足", "category": "study", "summary": "用户本周加班过多，英语单词未背，感到坚持力不足。", "goalTitle": "英语单词复习计划", "criterion": "每日背诵10个单词，连续5天完成复习", "suggestions": [{"title": "制定每日复习计划", "tip": "明确每天背诵10个单词，避免拖延", "minutes": 15}, {"title": "使用间隔重复法", "tip": "利用艾宾浩斯遗忘曲线，提高记忆效率", "minutes": 20}, {"title": "加入学习伙伴", "tip": "与同伴合作复习，互相监督", "minutes": 30}]}
+2026-10-04 21:59:16.447 INFO  [aiservice.access] ← #5f6fe2ea POST /api/prompt/analyze 200 39794.5ms
+2026-10-04 21:59:16.447 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:02:47.729 INFO  [aiservice.access] → #57ab6ba0 POST /api/prompt/analyze
+2026-10-04 22:02:47.729 DEBUG [aiservice.access] → #57ab6ba0 body {"user_id": "u_demo", "text": "三个月内减重 10 斤", "use_llm": true}
+2026-10-04 22:02:47.729 DEBUG [aiservice.access] → #57ab6ba0 命中 analyze
+2026-10-04 22:02:47.733 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 22:03:28.056 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=40323.1ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 22:03:28.058 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "new", "intentLabel": "新目标", "category": "fitness", "summary": "用户设定了三个月内减重10斤的减重目标", "goalTitle": "三个月减重10斤", "criterion": "三个月内体重下降10斤", "suggestions": [{"title": "制定每日饮食计划", "tip": "控制热量摄入，减少热量缺口", "minutes": 30}, {"title": "增加每日有氧运动", "tip": "坚持每日跑步30分钟", "minutes": 30}, {"title": "记录每日体重变化", "tip": "每周测量体重，保持记录", "minutes": 10}]}
+2026-10-04 22:03:28.058 INFO  [aiservice.access] ← #57ab6ba0 POST /api/prompt/analyze 200 40329.8ms
+2026-10-04 22:03:28.058 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:03:28.142 INFO  [aiservice.access] → #66b4e6af POST /api/prompt/analyze
+2026-10-04 22:03:28.142 DEBUG [aiservice.access] → #66b4e6af body {"user_id": "u_demo", "text": "年底前存下 5 万块", "use_llm": true}
+2026-10-04 22:03:28.142 DEBUG [aiservice.access] → #66b4e6af 命中 analyze
+2026-10-04 22:03:28.150 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=10
+2026-10-04 22:04:58.164 WARNING [aiservice.prompt] analyze 模型调用失败（timed out），回退本地规则 | user=u_demo provider=openai
+2026-10-04 22:04:58.166 INFO  [aiservice.access] ← #66b4e6af POST /api/prompt/analyze 200 90024.2ms
+2026-10-04 22:04:58.167 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:04:58.560 INFO  [aiservice.access] → #7cbbda0a POST /api/prompt/analyze
+2026-10-04 22:04:58.560 DEBUG [aiservice.access] → #7cbbda0a body {"user_id": "u_demo", "text": "这周又在加班，英语单词一个都没背，感觉坚持不下去了", "use_llm": true}
+2026-10-04 22:04:58.561 DEBUG [aiservice.access] → #7cbbda0a 命中 analyze
+2026-10-04 22:04:58.590 INFO  [aiservice.prompt] analyze 调用模型 | user=u_demo provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=25
+2026-10-04 22:06:24.394 INFO  [aiservice.prompt] analyze 模型返回 | user=u_demo 耗时=85803.5ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 22:06:24.395 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "setback", "intentLabel": "坚持力不足", "category": "study", "summary": "用户本周加班过多，英语单词未背，感到坚持不下去了。", "goalTitle": "坚持背单词，提升英语学习效率", "criterion": "每周至少背完 20 个英语单词，并在两周内完成", "suggestions": [{"title": "制定每日背单词计划", "tip": "分解任务，避免拖延", "minutes": 15}, {"title": "使用间隔重复记忆法", "tip": "提高记忆效率", "minutes": 10}, {"title": "调整工作与学习时间", "tip": "设定明确的学习时间块", "minutes": 20}]}
+2026-10-04 22:06:24.396 INFO  [aiservice.access] ← #7cbbda0a POST /api/prompt/analyze 200 85835.8ms
+2026-10-04 22:06:24.396 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:07:06.163 INFO  [aiservice.access] → #f99a2c7c GET /health
+2026-10-04 22:07:06.164 DEBUG [aiservice.access] → #f99a2c7c 命中 health
+2026-10-04 22:07:06.188 INFO  [aiservice.access] ← #f99a2c7c GET /health 200 24.1ms
+2026-10-04 22:07:06.188 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 22:07:06.188 INFO  [aiservice.access] → #31c95db7 GET /api/info
+2026-10-04 22:07:06.189 DEBUG [aiservice.access] → #31c95db7 命中 info
+2026-10-04 22:07:06.189 INFO  [aiservice.access] ← #31c95db7 GET /api/info 200 0.1ms
+2026-10-04 22:07:06.189 DEBUG [aiservice       ] 127.0.0.1 "GET /api/info HTTP/1.1" 200 -
+2026-10-04 22:07:06.189 INFO  [aiservice.access] → #d5b0a81e GET /api/prompt/templates
+2026-10-04 22:07:06.189 DEBUG [aiservice.access] → #d5b0a81e 命中 templates
+2026-10-04 22:07:06.189 INFO  [aiservice.access] ← #d5b0a81e GET /api/prompt/templates 200 0.1ms
+2026-10-04 22:07:06.189 DEBUG [aiservice       ] 127.0.0.1 "GET /api/prompt/templates HTTP/1.1" 200 -
+2026-10-04 22:07:06.190 INFO  [aiservice.access] → #858e1886 POST /api/prompt/render
+2026-10-04 22:07:06.190 DEBUG [aiservice.access] → #858e1886 body {"template": "analyze", "variables": {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd10\u65a4"}}
+2026-10-04 22:07:06.190 DEBUG [aiservice.access] → #858e1886 命中 render
+2026-10-04 22:07:06.190 INFO  [aiservice.access] ← #858e1886 POST /api/prompt/render 200 0.1ms
+2026-10-04 22:07:06.190 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/render HTTP/1.1" 200 -
+2026-10-04 22:07:06.190 INFO  [aiservice.access] → #69c21e85 POST /api/prompt/analyze
+2026-10-04 22:07:06.190 DEBUG [aiservice.access] → #69c21e85 body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 22:07:06.190 DEBUG [aiservice.access] → #69c21e85 命中 analyze
+2026-10-04 22:07:06.191 INFO  [aiservice.prompt] analyze 规则引擎 | user=- len=11 意图=new 领域=fitness 耗时=0.2ms
+2026-10-04 22:07:06.191 INFO  [aiservice.access] ← #69c21e85 POST /api/prompt/analyze 200 0.4ms
+2026-10-04 22:07:06.191 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:07:06.191 INFO  [aiservice.access] → #f7da9abf POST /api/prompt/complete
+2026-10-04 22:07:06.191 DEBUG [aiservice.access] → #f7da9abf body {"template": "reframe", "variables": {"text": "\u6700\u8fd1\u53c8\u6ca1\u575a\u6301\u4e0b\u6765"}}
+2026-10-04 22:07:06.191 DEBUG [aiservice.access] → #f7da9abf 命中 complete
+2026-10-04 22:07:06.191 INFO  [aiservice.prompt] complete | template=reframe provider=echo 输出 83 字 耗时=0.0ms
+2026-10-04 22:07:06.191 INFO  [aiservice.access] ← #f7da9abf POST /api/prompt/complete 200 0.1ms
+2026-10-04 22:07:06.191 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/complete HTTP/1.1" 200 -
+2026-10-04 22:07:06.192 INFO  [aiservice.access] → #e21efca9 POST /api/users
+2026-10-04 22:07:06.192 DEBUG [aiservice.access] → #e21efca9 body {"name": "\u81ea\u6d4b\u7528\u6237", "email": "selftest@timeline.dev"}
+2026-10-04 22:07:06.192 DEBUG [aiservice.access] → #e21efca9 命中 create
+2026-10-04 22:07:06.203 INFO  [aiservice.access] ← #e21efca9 POST /api/users 200 11.5ms
+2026-10-04 22:07:06.203 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users HTTP/1.1" 200 -
+2026-10-04 22:07:06.204 INFO  [aiservice.access] → #511fb89c GET /api/users
+2026-10-04 22:07:06.204 DEBUG [aiservice.access] → #511fb89c 命中 index
+2026-10-04 22:07:06.252 INFO  [aiservice.access] ← #511fb89c GET /api/users 200 47.7ms
+2026-10-04 22:07:06.252 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users HTTP/1.1" 200 -
+2026-10-04 22:07:06.252 INFO  [aiservice.access] → #37d0515d GET /api/users/u_0da461538c86
+2026-10-04 22:07:06.252 DEBUG [aiservice.access] → #37d0515d 命中 detail
+2026-10-04 22:07:06.261 INFO  [aiservice.access] ← #37d0515d GET /api/users/u_0da461538c86 200 9.1ms
+2026-10-04 22:07:06.262 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.262 INFO  [aiservice.access] → #c36f1c64 PATCH /api/users/u_0da461538c86
+2026-10-04 22:07:06.262 DEBUG [aiservice.access] → #c36f1c64 body {"name": "\u81ea\u6d4b\u7528\u6237\u6539\u540d"}
+2026-10-04 22:07:06.262 DEBUG [aiservice.access] → #c36f1c64 命中 update
+2026-10-04 22:07:06.287 INFO  [aiservice.access] ← #c36f1c64 PATCH /api/users/u_0da461538c86 200 24.3ms
+2026-10-04 22:07:06.287 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/users/u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.287 INFO  [aiservice.access] → #1c045992 POST /api/timeline/ingest?user_id=u_0da461538c86
+2026-10-04 22:07:06.287 DEBUG [aiservice.access] → #1c045992 body {"text": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4"}
+2026-10-04 22:07:06.287 DEBUG [aiservice.access] → #1c045992 命中 ingest
+2026-10-04 22:07:06.292 INFO  [aiservice.goal  ] ingest | user=u_0da461538c86 新建 目标=三个月内减重 10 斤 意图=new 分数=0.00 目标数=1
+2026-10-04 22:07:06.303 INFO  [aiservice.access] ← #1c045992 POST /api/timeline/ingest 200 15.5ms
+2026-10-04 22:07:06.303 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.303 INFO  [aiservice.access] → #1b66e071 POST /api/timeline/ingest?user_id=u_0da461538c86
+2026-10-04 22:07:06.303 DEBUG [aiservice.access] → #1b66e071 body {"text": "\u4eca\u5929\u8dd1\u4e86 3 \u516c\u91cc"}
+2026-10-04 22:07:06.303 DEBUG [aiservice.access] → #1b66e071 命中 ingest
+2026-10-04 22:07:06.309 INFO  [aiservice.goal  ] ingest | user=u_0da461538c86 归拢 目标=三个月内减重 10 斤 意图=progress 分数=0.50 目标数=1
+2026-10-04 22:07:06.383 INFO  [aiservice.access] ← #1b66e071 POST /api/timeline/ingest 200 79.7ms
+2026-10-04 22:07:06.383 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/ingest?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.396 INFO  [aiservice.access] → #fab23498 POST /api/timeline/goals/g_771c115faa85/actions?user_id=u_0da461538c86
+2026-10-04 22:07:06.396 DEBUG [aiservice.access] → #fab23498 body {"actions": [{"title": "\u8dd1 3 \u516c\u91cc", "tip": "\u914d\u901f\u968f\u610f\uff0c\u8dd1\u5b8c\u5c31\u884c", "minutes": 30}]}
+2026-10-04 22:07:06.396 DEBUG [aiservice.access] → #fab23498 命中 add_action
+2026-10-04 22:07:06.418 INFO  [aiservice.access] ← #fab23498 POST /api/timeline/goals/g_771c115faa85/actions 200 22.0ms
+2026-10-04 22:07:06.418 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/goals/g_771c115faa85/actions?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.418 INFO  [aiservice.access] → #87fbd88f GET /api/timeline?user_id=u_0da461538c86&days=7
+2026-10-04 22:07:06.419 DEBUG [aiservice.access] → #87fbd88f 命中 timeline
+2026-10-04 22:07:06.436 INFO  [aiservice.access] ← #87fbd88f GET /api/timeline 200 17.4ms
+2026-10-04 22:07:06.436 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=u_0da461538c86&days=7 HTTP/1.1" 200 -
+2026-10-04 22:07:06.437 INFO  [aiservice.access] → #43d87fc7 PATCH /api/timeline/tasks/t_1c35e39a3f8d?user_id=u_0da461538c86
+2026-10-04 22:07:06.437 DEBUG [aiservice.access] → #43d87fc7 body {"record_id": "r_81f88189660d", "done": true}
+2026-10-04 22:07:06.437 DEBUG [aiservice.access] → #43d87fc7 命中 toggle_task
+2026-10-04 22:07:06.441 INFO  [aiservice.timeline] 勾选任务 | user=u_0da461538c86 task=t_1c35e39a3f8d done=True 记录进度=100%
+2026-10-04 22:07:06.458 INFO  [aiservice.access] ← #43d87fc7 PATCH /api/timeline/tasks/t_1c35e39a3f8d 200 21.2ms
+2026-10-04 22:07:06.458 DEBUG [aiservice       ] 127.0.0.1 "PATCH /api/timeline/tasks/t_1c35e39a3f8d?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.459 INFO  [aiservice.access] → #73cc5439 POST /api/timeline/sync?user_id=u_0da461538c86
+2026-10-04 22:07:06.459 DEBUG [aiservice.access] → #73cc5439 命中 sync
+2026-10-04 22:07:06.476 INFO  [aiservice.access] ← #73cc5439 POST /api/timeline/sync 200 17.4ms
+2026-10-04 22:07:06.476 DEBUG [aiservice       ] 127.0.0.1 "POST /api/timeline/sync?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.477 INFO  [aiservice.access] → #2473f657 GET /api/timeline/stats?user_id=u_0da461538c86
+2026-10-04 22:07:06.477 DEBUG [aiservice.access] → #2473f657 命中 stats
+2026-10-04 22:07:06.492 INFO  [aiservice.access] ← #2473f657 GET /api/timeline/stats 200 15.0ms
+2026-10-04 22:07:06.492 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/stats?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.493 INFO  [aiservice.access] → #c7f0dc37 GET /api/timeline/goals?user_id=u_0da461538c86
+2026-10-04 22:07:06.493 DEBUG [aiservice.access] → #c7f0dc37 命中 goals
+2026-10-04 22:07:06.509 INFO  [aiservice.access] ← #c7f0dc37 GET /api/timeline/goals 200 16.6ms
+2026-10-04 22:07:06.509 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline/goals?user_id=u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:06.510 INFO  [aiservice.access] → #634ba7c9 GET /api/users/u_0da461538c86/export
+2026-10-04 22:07:06.510 DEBUG [aiservice.access] → #634ba7c9 命中 export
+2026-10-04 22:07:06.515 INFO  [aiservice.access] ← #634ba7c9 GET /api/users/u_0da461538c86/export 200 4.8ms
+2026-10-04 22:07:06.515 DEBUG [aiservice       ] 127.0.0.1 "GET /api/users/u_0da461538c86/export HTTP/1.1" 200 -
+2026-10-04 22:07:06.515 INFO  [aiservice.access] → #79e84187 POST /api/users/u_0da461538c86/import
+2026-10-04 22:07:06.515 DEBUG [aiservice.access] → #79e84187 body {"goals": [{"id": "g_771c115faa85", "title": "\u4e09\u4e2a\u6708\u5185\u51cf\u91cd 10 \u65a4", "criterion": "\u57283\u4e2a \u00b7 3\u4e2a\u6708\u4e4b\u5185\uff0c\u6211\u80fd\u660e\u786e\u8bf4\u51fa\u5b83\u5df2\u7ecf\u5b8c\u6210\u4e86", "categoryKey": "fitness", "categoryName": "\u5065\u5eb7\u5851\u5 …(+1675)
+2026-10-04 22:07:06.515 DEBUG [aiservice.access] → #79e84187 命中 import_data
+2026-10-04 22:07:06.531 INFO  [aiservice.access] ← #79e84187 POST /api/users/u_0da461538c86/import 200 15.2ms
+2026-10-04 22:07:06.531 DEBUG [aiservice       ] 127.0.0.1 "POST /api/users/u_0da461538c86/import HTTP/1.1" 200 -
+2026-10-04 22:07:06.531 INFO  [aiservice.access] → #e551c5e4 GET /api/state
+2026-10-04 22:07:06.531 DEBUG [aiservice.access] → #e551c5e4 命中 pull
+2026-10-04 22:07:06.531 WARNING [aiservice.access] ← #e551c5e4 GET /api/state 业务异常 401: 缺少 Bearer token（调试可加 ?user_id=xxx）
+2026-10-04 22:07:06.531 INFO  [aiservice.access] ← #e551c5e4 GET /api/state 401 0.1ms
+2026-10-04 22:07:06.531 DEBUG [aiservice       ] 127.0.0.1 "GET /api/state HTTP/1.1" 401 -
+2026-10-04 22:07:06.532 INFO  [aiservice.access] → #897f5aa6 PUT /api/state?user_id=legacy_demo
+2026-10-04 22:07:06.532 DEBUG [aiservice.access] → #897f5aa6 body {"goals": [], "records": []}
+2026-10-04 22:07:06.532 DEBUG [aiservice.access] → #897f5aa6 命中 push
+2026-10-04 22:07:06.547 INFO  [aiservice.access] ← #897f5aa6 PUT /api/state 200 15.0ms
+2026-10-04 22:07:06.547 DEBUG [aiservice       ] 127.0.0.1 "PUT /api/state?user_id=legacy_demo HTTP/1.1" 200 -
+2026-10-04 22:07:06.548 INFO  [aiservice.access] → #d4f6f00b DELETE /api/users/u_0da461538c86
+2026-10-04 22:07:06.548 DEBUG [aiservice.access] → #d4f6f00b 命中 remove
+2026-10-04 22:07:06.586 INFO  [aiservice.access] ← #d4f6f00b DELETE /api/users/u_0da461538c86 200 38.6ms
+2026-10-04 22:07:06.586 DEBUG [aiservice       ] 127.0.0.1 "DELETE /api/users/u_0da461538c86 HTTP/1.1" 200 -
+2026-10-04 22:07:20.153 INFO  [aiservice.access] → #24a5b2e6 POST /api/prompt/analyze
+2026-10-04 22:07:20.154 DEBUG [aiservice.access] → #24a5b2e6 body {"text":"三个月内减重 10 斤","user_id":"anonymous","use_llm":true}
+2026-10-04 22:07:20.154 DEBUG [aiservice.access] → #24a5b2e6 命中 analyze
+2026-10-04 22:07:20.160 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=11
+2026-10-04 22:07:53.727 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=33566.7ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 22:07:53.728 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "new", "intentLabel": "减重", "category": "fitness", "summary": "用户设定了三个月内减重10斤的减重目标。", "goalTitle": "三个月减重10斤计划", "criterion": "达成标准为三个月内减重10斤", "suggestions": [{"title": "每日记录体重并监测进度", "tip": "每日记录体重有助于追踪减重进度", "minutes": 5}, {"title": "增加每日有氧运动时间", "tip": "增加有氧运动能加速代谢", "minutes": 10}, {"title": "控制饮食摄入量", "tip": "控制热量摄入是减重的关键", "minutes": 15}]}
+2026-10-04 22:07:53.728 INFO  [aiservice.access] ← #24a5b2e6 POST /api/prompt/analyze 200 33575.3ms
+2026-10-04 22:07:53.728 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:07:53.740 INFO  [aiservice.access] → #049509aa POST /api/prompt/analyze
+2026-10-04 22:07:53.740 DEBUG [aiservice.access] → #049509aa body {"text":"年底前存下 5 万块","user_id":"anonymous","use_llm":true}
+2026-10-04 22:07:53.740 DEBUG [aiservice.access] → #049509aa 命中 analyze
+2026-10-04 22:07:53.756 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=10
+2026-10-04 22:09:23.787 WARNING [aiservice.prompt] analyze 模型调用失败（timed out），回退本地规则 | user=anonymous provider=openai
+2026-10-04 22:09:23.790 INFO  [aiservice.access] ← #049509aa POST /api/prompt/analyze 200 90050.4ms
+2026-10-04 22:09:23.790 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:09:23.796 INFO  [aiservice.access] → #d6eec384 GET /api/timeline?user_id=anonymous&days=7
+2026-10-04 22:09:23.796 DEBUG [aiservice.access] → #d6eec384 命中 timeline
+2026-10-04 22:09:23.883 INFO  [aiservice.access] ← #d6eec384 GET /api/timeline 200 87.3ms
+2026-10-04 22:09:23.883 DEBUG [aiservice       ] 127.0.0.1 "GET /api/timeline?user_id=anonymous&days=7 HTTP/1.1" 200 -
+2026-10-04 22:09:23.885 INFO  [aiservice.access] → #30799e08 GET /health
+2026-10-04 22:09:23.885 DEBUG [aiservice.access] → #30799e08 命中 health
+2026-10-04 22:09:23.953 INFO  [aiservice.access] ← #30799e08 GET /health 200 68.0ms
+2026-10-04 22:09:23.953 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 22:10:15.113 INFO  [aiservice.access] → #8f08022a GET /health
+2026-10-04 22:10:15.114 DEBUG [aiservice.access] → #8f08022a 命中 health
+2026-10-04 22:10:15.144 INFO  [aiservice.access] ← #8f08022a GET /health 200 30.3ms
+2026-10-04 22:10:15.144 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 22:56:36.458 INFO  [aiservice.access] → #c544b423 GET /health
+2026-10-04 22:56:36.459 DEBUG [aiservice.access] → #c544b423 命中 health
+2026-10-04 22:56:36.461 INFO  [aiservice.access] ← #c544b423 GET /health 200 2.9ms
+2026-10-04 22:56:36.461 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 22:57:01.886 INFO  [aiservice.access] → #b4f4cf34 GET /health
+2026-10-04 22:57:01.887 DEBUG [aiservice.access] → #b4f4cf34 命中 health
+2026-10-04 22:57:01.889 INFO  [aiservice.access] ← #b4f4cf34 GET /health 200 3.0ms
+2026-10-04 22:57:01.889 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -
+2026-10-04 22:57:12.782 INFO  [aiservice.access] → #b8865a17 POST /api/prompt/analyze
+2026-10-04 22:57:12.783 DEBUG [aiservice.access] → #b8865a17 body {"text":"我想去港大学习","user_id":"anonymous","use_llm":true}
+2026-10-04 22:57:12.783 DEBUG [aiservice.access] → #b8865a17 命中 analyze
+2026-10-04 22:57:12.787 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=7
+2026-10-04 22:57:42.488 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=29703.0ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 22:57:42.489 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "new", "intentLabel": "留学计划", "category": "study", "summary": "用户表达了前往香港学习的愿望，尚未制定具体计划。", "goalTitle": "港大香港大学留学计划", "criterion": "2025年完成香港大学申请并报到", "suggestions": [{"title": "准备留学材料", "tip": "整理学历证书和语言成绩，准备好所有申请材料", "minutes": 60}, {"title": "填写申请表", "tip": "填写香港大学的留学申请表并提交", "minutes": 90}, {"title": "面试并报到", "tip": "参加香港大学的面试并完成入学手续", "minutes": 120}]}
+2026-10-04 22:57:42.490 INFO  [aiservice.access] ← #b8865a17 POST /api/prompt/analyze 200 29709.3ms
+2026-10-04 22:57:42.491 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:58:23.039 INFO  [aiservice.access] → #85c18045 POST /api/prompt/analyze
+2026-10-04 22:58:23.040 DEBUG [aiservice.access] → #85c18045 body {"text":"什么情况","user_id":"anonymous","use_llm":true}
+2026-10-04 22:58:23.040 DEBUG [aiservice.access] → #85c18045 命中 analyze
+2026-10-04 22:58:23.041 INFO  [aiservice.prompt] analyze 调用模型 | user=anonymous provider=openai model=LiquidAI/LFM2_5-2_6B-Q4_K_M len=4
+2026-10-04 22:58:45.882 INFO  [aiservice.prompt] analyze 模型返回 | user=anonymous 耗时=22840.8ms keys=category,criterion,goalTitle,intent,intentLabel,suggestions,summary
+2026-10-04 22:58:45.885 DEBUG [aiservice.prompt] analyze 原始输出 | {"intent": "ask", "intentLabel": "询问状态", "category": "generic", "summary": "用户询问当前状态，但未提供具体目标或进展信息", "goalTitle": "用户状态查询与反馈", "criterion": "需在30秒内给出完整回答并提供相关信息", "suggestions": [{"title": "确认用户意图", "tip": "先明确用户想要了解的具体情况", "minutes": 2}, {"title": "提供通用回复模板", "tip": "可根据不同意图调整回复内容", "minutes": 3}, {"title": "记录查询日志", "tip": "为后续对话提供上下文参考", "minutes": 1}]}
+2026-10-04 22:58:45.888 INFO  [aiservice.access] ← #85c18045 POST /api/prompt/analyze 200 22849.0ms
+2026-10-04 22:58:45.888 DEBUG [aiservice       ] 127.0.0.1 "POST /api/prompt/analyze HTTP/1.1" 200 -
+2026-10-04 22:59:04.391 INFO  [aiservice.access] → #51c5ffe6 GET /health
+2026-10-04 22:59:04.391 DEBUG [aiservice.access] → #51c5ffe6 命中 health
+2026-10-04 22:59:04.394 INFO  [aiservice.access] ← #51c5ffe6 GET /health 200 3.6ms
+2026-10-04 22:59:04.394 DEBUG [aiservice       ] 127.0.0.1 "GET /health HTTP/1.1" 200 -

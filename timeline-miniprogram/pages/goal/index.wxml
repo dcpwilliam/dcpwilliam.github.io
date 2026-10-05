@@ -1,0 +1,77 @@
+<view class="page">
+  <!-- 概览 -->
+  <view class="card stat" wx:if="{{goals.length}}">
+    <view class="stat-row">
+      <view class="stat-cell">
+        <view class="sn">{{stat.active}}</view>
+        <view class="sl">进行中</view>
+      </view>
+      <view class="stat-cell">
+        <view class="sn done">{{stat.done}}</view>
+        <view class="sl">已达成</view>
+      </view>
+      <view class="stat-cell">
+        <view class="sn week">{{stat.weekDone}}</view>
+        <view class="sl">近七天完成</view>
+      </view>
+    </view>
+    <view class="auto-note">目标由你说的每句话自动归拢，进度随时间线上的完成情况自动更新</view>
+  </view>
+
+  <!-- 空态 -->
+  <view class="empty" wx:if="{{!goals.length}}">
+    <view class="empty-title">还没有目标</view>
+    <view>去「需求」页随口说一句，我会判断它是进展、阻力还是新目标，然后自己长出目标来</view>
+    <view class="btn ghost go" bindtap="goInput">去说一句</view>
+  </view>
+
+  <!-- 目标卡片 -->
+  <view class="card gcard {{item.status === 'done' ? 'is-done' : ''}}" wx:for="{{goals}}" wx:key="id">
+    <view class="g-head" data-id="{{item.id}}" bindtap="onToggle">
+      <view class="g-left">
+        <view class="g-title" style="border-left-color:{{item.color}}">{{item.title}}</view>
+        <view class="g-tags">
+          <text class="g-tag" style="background:{{item.color}}14;color:{{item.color}}">{{item.categoryName}}</text>
+          <text class="g-tag grey" wx:if="{{item.status === 'done'}}">已达成</text>
+          <text class="g-tag grey" wx:elif="{{item.stalledDays >= 3}}">{{item.stalledDays}} 天没动静</text>
+          <text class="g-tag grey" wx:else>{{item.lastLabel}}</text>
+        </view>
+      </view>
+      <view class="g-right">
+        <view class="g-p">{{item.progress}}<text class="g-pct">%</text></view>
+        <view class="arrow {{item.open ? 'up' : ''}}">›</view>
+      </view>
+    </view>
+
+    <view class="bar"><view class="bar-in" style="width:{{item.progress}}%;background:{{item.color}}"></view></view>
+
+    <view class="g-metric" wx:if="{{item.metricLabel}}">{{item.metricLabel}}</view>
+
+    <view class="advice" wx:if="{{item.status !== 'done'}}">
+      <text class="advice-k">建议</text>
+      <text class="advice-v">{{item.advice}}</text>
+    </view>
+
+    <!-- 展开：动态与操作 -->
+    <view class="g-body" wx:if="{{item.open}}">
+      <view class="sec-title">最近提到的（{{item.mentionCount}}）</view>
+      <view class="men" wx:for="{{item.mentions}}" wx:for-item="m" wx:key="ts">
+        <view class="men-dot" style="background:{{item.color}}"></view>
+        <view class="men-body">
+          <view class="men-text">{{m.text}}</view>
+          <view class="men-meta">{{m.timeLabel}} · {{m.intentLabel}}</view>
+        </view>
+      </view>
+
+      <view class="sec-title" wx:if="{{item.criterion}}">怎么算达成</view>
+      <view class="cri" wx:if="{{item.criterion}}">{{item.criterion}}</view>
+
+      <view class="g-acts">
+        <view class="ga primary" data-id="{{item.id}}" bindtap="onPaths">三条路径</view>
+        <view class="ga" data-id="{{item.id}}" bindtap="onAddAction">加一条行动</view>
+        <view class="ga" wx:if="{{item.status !== 'done'}}" data-id="{{item.id}}" bindtap="onFinish">标记达成</view>
+        <view class="ga danger" data-id="{{item.id}}" bindtap="onRemove">删除</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<view class="page">
+  <!-- 已登录 -->
+  <view class="card user-card" wx:if="{{user}}">
+    <view class="avatar" style="background:{{accent}}">
+      <image wx:if="{{user.picture}}" class="avatar-img" src="{{user.picture}}" mode="aspectFill" />
+      <text wx:else class="avatar-txt">{{initial}}</text>
+    </view>
+    <view class="u-name">{{displayName}}</view>
+    <view class="u-sub" wx:if="{{user.email}}">{{user.email}}</view>
+    <view class="u-sub" wx:if="{{user.phone}}">{{user.phone}}</view>
+
+    <view class="kv">
+      <text class="k">用户 ID</text><text class="v">{{user.sub}}</text>
+    </view>
+    <view class="kv">
+      <text class="k">登录时间</text><text class="v">{{loginAtLabel}}</text>
+    </view>
+    <view class="kv" wx:if="{{expiresLabel}}">
+      <text class="k">凭证有效期</text><text class="v">{{expiresLabel}}</text>
+    </view>
+
+    <view class="acts">
+      <view class="act" bindtap="onRefreshInfo">刷新资料</view>
+      <view class="act danger" bindtap="onLogout">退出登录</view>
+    </view>
+  </view>
+
+  <!-- 未登录 -->
+  <block wx:else>
+    <view class="card intro">
+      <view class="i-title">用 Authing 登录</view>
+      <view class="i-desc">登录后会用用户 ID 隔离你的目标与行动，并支持在多台设备之间备份与恢复。凭证只保存在本机，服务端只保留 App Secret 用于换取 token。</view>
+      <view class="btn primary" bindtap="onLogin">立即登录</view>
+      <view class="i-note">走 OIDC 授权码流程（PKCE），不会把密码交给小程序</view>
+    </view>
+
+    <view class="card manual">
+      <view class="m-head" bindtap="onToggleManual">
+        <text>收不到回调？手动粘贴 code</text>
+        <text class="arrow {{manualOpen ? 'up' : ''}}">›</text>
+      </view>
+      <block wx:if="{{manualOpen}}">
+        <view class="m-desc">如果当前域名未配置为小程序的业务域名，回调页无法自动跳回。复制回调页上的 code，粘到这里即可。</view>
+        <textarea
+          class="m-input"
+          placeholder="粘贴 code"
+          placeholder-class="ph"
+          value="{{codeInput}}"
+          bindinput="onCodeInput"
+          maxlength="200"
+          auto-height
+        />
+        <view class="btn {{codeInput ? 'primary' : 'off'}}" bindtap="onSubmitCode">用 code 登录</view>
+      </block>
+    </view>
+  </block>
+
+  <view class="err" wx:if="{{error}}">{{error}}</view>
+</view>
+
+<view class="mask" wx:if="{{busy}}">
+  <view class="mask-box">
+    <view class="spinner"></view>
+    <view class="mask-text">{{busyText}}</view>
+  </view>
+</view>

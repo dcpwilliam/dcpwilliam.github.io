@@ -1,0 +1,13 @@
+# aiservice 只依赖 Python 标准库，pip install 什么都不用装。
+#
+# 想接真实大模型时也不需要 SDK —— openai_compatible.py 用 urllib 直接调
+# OpenAI 兼容的 /chat/completions，配好环境变量即可：
+#
+#   export LLM_PROVIDER=openai
+#   export LLM_API_KEY=sk-xxx
+#   export LLM_BASE_URL=https://api.deepseek.com/v1   # 或 https://api.moonshot.cn/v1、http://localhost:11434/v1
+#   export LLM_MODEL=deepseek-chat
+#
+# 可选（只是开发体验更好，非运行必需）：
+#   httpx        # 想替换 urllib 时
+#   pytest       # 想写单元测试时

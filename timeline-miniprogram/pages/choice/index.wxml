@@ -1,0 +1,88 @@
+<view class="page">
+  <!-- 需求回顾 -->
+  <view class="card need-card" wx:if="{{need}}">
+    <view class="need-head">
+      <view class="need-label">当前目标</view>
+      <view class="switch" bindtap="goGoal">换一个 ›</view>
+    </view>
+    <view class="need-text">{{need.raw}}</view>
+    <view class="need-tags">
+      <view class="tag" style="background:{{need.color}}1A;color:{{need.color}}">{{need.categoryName}}</view>
+      <view class="tag gray">时限 {{need.horizon}}</view>
+      <view class="tag gray" wx:if="{{need.quantity}}">量化 {{need.quantity}}{{need.unit}}</view>
+      <view class="tag gray" wx:if="{{goal}}">已完成 {{goal.progress}}%</view>
+    </view>
+    <view class="need-note">下面三条是通往它的不同走法，达成概率由时限、强度与常见完成率综合估算</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!need}}">
+    <view class="empty-title">还没有目标</view>
+    <view>先在「需求」页随口说一句，目标会自动长出来；再从目标页挑一个，我给你三条路</view>
+    <view class="btn ghost go-btn" bindtap="goInput">去说一句</view>
+  </view>
+
+  <!-- 分析中 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <view class="loading-text">正在推演可能的未来…</view>
+  </view>
+
+  <!-- 三条选择 -->
+  <block wx:if="{{!loading && options.length}}">
+    <view class="section-title">三条未来路径</view>
+    <view
+      class="card opt-card {{item.top ? 'top' : ''}}"
+      wx:for="{{options}}"
+      wx:key="id"
+      style="border-left: 8rpx solid {{item.top ? '#5B6CFF' : '#E4E7F2'}}"
+    >
+      <view class="opt-head">
+        <view class="opt-left">
+          <view class="opt-emoji">{{item.emoji}}</view>
+          <view>
+            <view class="opt-name">{{item.name}}</view>
+            <view class="opt-tag">{{item.tag}}{{item.top ? ' · 概率最高' : ''}}</view>
+          </view>
+        </view>
+        <view class="opt-prob">
+          <text class="prob-num">{{item.probability}}</text>
+          <text class="prob-pct">%</text>
+          <view class="prob-label">达成概率</view>
+        </view>
+      </view>
+
+      <view class="bar"><view class="bar-in" style="width:{{item.probability}}%"></view></view>
+
+      <view class="opt-way">{{item.way}}</view>
+
+      <view class="opt-meta">
+        <view class="meta-row">
+          <text class="meta-k">预计投入</text>
+          <text class="meta-v">{{item.cost}}</text>
+        </view>
+        <view class="meta-row">
+          <text class="meta-k">主要风险</text>
+          <text class="meta-v">{{item.risk}}</text>
+        </view>
+      </view>
+
+      <view class="opt-actions">
+        <view class="pick-btn" data-index="{{index}}" bindtap="onPick">选它 · 生成七天行动</view>
+        <view class="peek" data-index="{{index}}" bindtap="onPeek">{{item.open ? '收起日程' : '看七天日程'}}</view>
+      </view>
+
+      <view class="peek-list" wx:if="{{item.open}}">
+        <view class="peek-item" wx:for="{{item.preview}}" wx:for-item="p" wx:key="dateLabel">
+          <view class="peek-date">{{p.dateLabel}}</view>
+          <view class="peek-body">
+            <view class="peek-title">{{p.title}}</view>
+            <view class="peek-tip">{{p.tip}} · {{p.minutes}} 分钟</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="reroll" bindtap="onReroll">换一组走法</view>
+  </block>
+</view>

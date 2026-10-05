@@ -1,0 +1,372 @@
+/* 登录状态条 */
+.auth-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 18rpx;
+  padding: 18rpx 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(27, 31, 51, 0.04);
+}
+.auth-bar.guest {
+  background: linear-gradient(135deg, #f4f6ff, #eef0ff);
+}
+.ab-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 700;
+  flex: none;
+  margin-right: 18rpx;
+}
+.ab-avatar.gray {
+  background: #c2c8d8;
+}
+.ab-mid {
+  flex: 1;
+  min-width: 0;
+}
+.ab-name {
+  font-size: 27rpx;
+  font-weight: 600;
+  color: #1b1f33;
+}
+.ab-sub {
+  margin-top: 4rpx;
+  font-size: 21rpx;
+  color: #a6aebc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ab-acts {
+  display: flex;
+  flex: none;
+}
+.ab-btn {
+  padding: 10rpx 20rpx;
+  border-radius: 24rpx;
+  background: #f2f4fa;
+  color: #4a5168;
+  font-size: 23rpx;
+  margin-left: 12rpx;
+}
+.ab-btn.primary {
+  background: linear-gradient(135deg, #6f7dff, #5b6cff);
+  color: #fff;
+  font-weight: 600;
+}
+.ab-btn.gear {
+  padding: 10rpx 14rpx;
+  font-size: 26rpx;
+  color: #8a91a6;
+}
+
+.stat-card {
+  padding: 28rpx;
+}
+.stat-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.stat-num {
+  font-size: 56rpx;
+  font-weight: 800;
+  color: #1b1f33;
+  line-height: 1;
+}
+.stat-unit {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #a6aebc;
+}
+.stat-label {
+  margin-top: 12rpx;
+  font-size: 23rpx;
+  color: #8a91a6;
+}
+.stat-right {
+  text-align: right;
+}
+.stat-percent {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #5b6cff;
+  line-height: 1;
+}
+.bar {
+  margin-top: 24rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background: #eef0f7;
+  overflow: hidden;
+}
+.bar-in {
+  height: 100%;
+  border-radius: 5rpx;
+  background: linear-gradient(90deg, #7c8bff, #5b6cff);
+}
+
+/* 日期导航 */
+.nav {
+  margin-top: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-btn {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  background: #fff;
+  color: #4a5168;
+  font-size: 40rpx;
+  line-height: 58rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 14rpx rgba(27, 31, 51, 0.06);
+}
+.nav-range {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1b1f33;
+}
+.nav-sub {
+  margin-top: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #a6aebc;
+}
+.back-today,
+.fold-all {
+  color: #5b6cff;
+}
+
+/* 筛选 */
+.filters {
+  margin-top: 24rpx;
+  white-space: nowrap;
+}
+.filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  margin-right: 16rpx;
+  border-radius: 30rpx;
+  background: #fff;
+  font-size: 25rpx;
+  color: #4a5168;
+  max-width: 320rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.filter.on {
+  background: #eef0ff;
+  color: #5b6cff;
+  font-weight: 600;
+}
+.fdot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+  margin-right: 12rpx;
+  flex: none;
+}
+
+/* 天 */
+.day {
+  margin-top: 24rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 20rpx rgba(27, 31, 51, 0.04);
+}
+.day-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26rpx 28rpx;
+}
+.day-left {
+  display: flex;
+  align-items: baseline;
+}
+.day-rel {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1b1f33;
+  margin-right: 14rpx;
+}
+.day-rel.today {
+  color: #5b6cff;
+}
+.day-md {
+  font-size: 23rpx;
+  color: #a6aebc;
+}
+.day-right {
+  display: flex;
+  align-items: center;
+}
+.day-count {
+  font-size: 24rpx;
+  color: #8a91a6;
+  margin-right: 18rpx;
+}
+.done-n {
+  color: #12b886;
+  font-weight: 600;
+}
+.arrow {
+  font-size: 34rpx;
+  color: #c2c8d8;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+.arrow.up {
+  transform: rotate(-90deg);
+}
+
+.day-body {
+  padding: 0 28rpx 12rpx;
+  border-top: 2rpx solid #f4f6fb;
+}
+.day-empty {
+  padding: 28rpx 0;
+  font-size: 25rpx;
+  text-align: center;
+}
+
+/* 任务 */
+.task {
+  display: flex;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f7f8fc;
+}
+.task:last-child {
+  border-bottom: none;
+}
+.check {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  border: 3rpx solid #d7dbe8;
+  margin-right: 22rpx;
+  margin-top: 4rpx;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.check-in {
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 11rpx;
+}
+.task-main {
+  flex: 1;
+  min-width: 0;
+}
+.task.done .task-title {
+  color: #a6aebc;
+  text-decoration: line-through;
+}
+.task-title {
+  font-size: 28rpx;
+  line-height: 1.55;
+  color: #1b1f33;
+}
+.task-tip {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #a6aebc;
+  line-height: 1.55;
+}
+.task-meta {
+  margin-top: 12rpx;
+  display: flex;
+  align-items: center;
+  font-size: 21rpx;
+  color: #a6aebc;
+}
+.phase {
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+  margin-right: 14rpx;
+}
+.minutes {
+  margin-right: 14rpx;
+}
+.from {
+  flex: 1;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 需求列表 */
+.section {
+  margin-top: 44rpx;
+}
+.section-title {
+  font-size: 26rpx;
+  color: #8a91a6;
+  margin-bottom: 18rpx;
+}
+.rec {
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+.rec-head {
+  display: flex;
+  align-items: center;
+}
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 7rpx;
+  margin-right: 14rpx;
+  flex: none;
+}
+.rec-need {
+  flex: 1;
+  font-size: 29rpx;
+  font-weight: 500;
+  color: #1b1f33;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rec-del {
+  flex: none;
+  font-size: 23rpx;
+  color: #c2c8d8;
+  padding: 6rpx 8rpx;
+}
+.rec-meta {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: #4a5168;
+}
+.rec-opt {
+  color: #5b6cff;
+}
+.rec-note {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #a6aebc;
+}
+
+.go-btn {
+  margin: 40rpx 120rpx 0;
+}

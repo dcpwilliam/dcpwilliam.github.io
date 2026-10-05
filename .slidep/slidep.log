@@ -1,0 +1,5 @@
+=== boot pid=13773 ts=2026-08-13 21:11:17.210 cwd=/Users/williamleon/Desktop/dcpwilliam.github.io argv=/Users/williamleon/.workbuddy/binaries/node/versions/22.22.2/bin/slidep-start --project 灵控机器人宣传海报 --filename 灵控机器人宣传海报.pptx ===
+[2026-08-13 21:11:17.198] [INFO ] [pid=13773] [start] invoked pid=13773 cwd=/Users/williamleon/Desktop/dcpwilliam.github.io daemonChild=no dev=no argv=[--project 灵控机器人宣传海报 --filename 灵控机器人宣传海报.pptx]
+[2026-08-13 21:11:17.211] [INFO ] [pid=13773] [start] spawning daemon projectDir=/Users/williamleon/Desktop/dcpwilliam.github.io/灵控机器人宣传海报 filename=灵控机器人宣传海报.pptx
+[2026-08-13 21:11:17.314] [INFO ] [pid=13773] [start] daemon spawned childPid=13878; waiting started ipc
+[2026-08-13 21:11:25.129] [INFO ] [pid=13773] [start] daemon started childPid=13878 ms=7918

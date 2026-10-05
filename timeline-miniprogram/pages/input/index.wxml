@@ -1,0 +1,102 @@
+<view class="page">
+  <!-- 当前目标速览 -->
+  <view class="cur" wx:if="{{currentGoal}}" bindtap="goGoal">
+    <view class="cur-left">
+      <view class="dot" style="background:{{currentGoal.color}}"></view>
+      <view class="cur-title">{{currentGoal.title}}</view>
+    </view>
+    <view class="cur-right">
+      <text class="cur-p">{{currentGoal.progress}}%</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 会话流 -->
+  <view class="chat" wx:if="{{msgs.length}}">
+    <block wx:for="{{msgs}}" wx:key="id">
+      <!-- 用户说的 -->
+      <view class="row-me">
+        <view class="bubble me">
+          <view class="b-text">{{item.text}}</view>
+          <view class="b-time">{{item.timeLabel}}</view>
+        </view>
+      </view>
+
+      <!-- 系统的理解 -->
+      <view class="bubble ai" wx:if="{{item.analyzing}}">
+        <view class="typing"><text></text><text></text><text></text></view>
+      </view>
+      <view class="bubble ai" wx:else>
+        <view class="ai-head">
+          <text class="intent" style="background:{{item.color}}14;color:{{item.color}}">{{item.intentLabel}}</text>
+          <text class="cat">{{item.categoryName}}</text>
+          <text class="src" wx:if="{{item.source === 'server'}}">服务端</text>
+          <text class="src off" wx:elif="{{item.source === 'local'}}">本地</text>
+        </view>
+        <view class="summary">{{item.summary}}</view>
+
+        <view class="goal-card" wx:if="{{item.goalTitle}}">
+          <view class="gc-label">{{item.isNew ? (item.created ? '已立为目标' : '这像是一个新目标') : '归入已有目标'}}</view>
+          <view class="gc-title" style="border-left-color:{{item.color}}">{{item.goalTitle}}</view>
+          <view class="gc-cri">{{item.criterion}}</view>
+          <view class="gc-metric" wx:if="{{item.metricLabel}}">{{item.metricLabel}}</view>
+        </view>
+
+        <view class="sug" wx:for="{{item.suggestions}}" wx:for-item="s" wx:key="title">
+          <view class="sug-dot" style="background:{{item.color}}"></view>
+          <view class="sug-body">
+            <view class="sug-t">{{s.title}}</view>
+            <view class="sug-tip">{{s.tip}} · {{s.minutes}} 分钟</view>
+          </view>
+        </view>
+
+        <view class="acts">
+          <view class="act primary" wx:if="{{item.isNew && !item.created}}" data-id="{{item.id}}" bindtap="onMakeGoal">立为目标</view>
+          <block wx:if="{{item.goalId && !item.isNew}}">
+            <view class="act primary" wx:if="{{!item.added}}" data-id="{{item.id}}" bindtap="onAdd">加入时间线</view>
+            <view class="act done" wx:else>已加入时间线</view>
+            <view class="act" data-id="{{item.id}}" bindtap="onPaths">看三条路径</view>
+          </block>
+          <block wx:if="{{item.goalId && item.isNew && item.created}}">
+            <view class="act primary" wx:if="{{!item.added}}" data-id="{{item.id}}" bindtap="onAdd">加入时间线</view>
+            <view class="act done" wx:else>已加入时间线</view>
+            <view class="act" data-id="{{item.id}}" bindtap="onPaths">看三条路径</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空态 -->
+  <view class="welcome" wx:else>
+    <view class="w-title">想到什么就说一句</view>
+    <view class="w-sub">不用想清楚再说。我会判断你是在汇报进展、遇到阻力，还是冒出了一个新目标 —— 然后替你记着，并拆成下一步。</view>
+    <view class="chips">
+      <view class="chip" wx:for="{{chips}}" wx:key="*this" data-text="{{item}}" bindtap="onChip">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="pad"></view>
+</view>
+
+<!-- 输入栏 -->
+<view class="composer">
+  <view class="mic" bindtap="onVoice">
+    <view class="mic-i"></view>
+  </view>
+  <textarea
+    class="inp"
+    placeholder="说说现在的情况…（点左边话筒可直接说）"
+    placeholder-class="ph"
+    value="{{text}}"
+    focus="{{focused}}"
+    bindinput="onInput"
+    bindblur="onBlur"
+    maxlength="120"
+    fixed="{{true}}"
+    cursor-spacing="18"
+    show-confirm-bar="{{false}}"
+    auto-height
+  />
+  <view class="send {{canSend ? '' : 'off'}}" bindtap="onSend">发送</view>
+</view>

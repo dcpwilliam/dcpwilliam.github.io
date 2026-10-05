@@ -1,0 +1,134 @@
+<view class="page">
+  <!-- 登录状态 / 云端备份 -->
+  <view class="auth-bar" wx:if="{{user}}" bindtap="goAuth">
+    <view class="ab-avatar" style="background:#5B6CFF">{{initial}}</view>
+    <view class="ab-mid">
+      <view class="ab-name">{{displayName}}</view>
+      <view class="ab-sub">{{syncLabel}}</view>
+    </view>
+    <view class="ab-acts">
+      <view class="ab-btn" catchtap="onBackup">备份</view>
+      <view class="ab-btn" catchtap="onRestore">恢复</view>
+      <view class="ab-btn gear" catchtap="goSettings">⚙</view>
+    </view>
+  </view>
+  <view class="auth-bar guest" wx:else bindtap="goAuth">
+    <view class="ab-avatar gray">?</view>
+    <view class="ab-mid">
+      <view class="ab-name">未登录</view>
+      <view class="ab-sub">登录后按用户隔离，并支持多设备备份恢复</view>
+    </view>
+    <view class="ab-btn gear" catchtap="goSettings">⚙</view>
+    <view class="ab-btn primary">登录</view>
+  </view>
+
+  <!-- 概览 -->
+  <view class="card stat-card" wx:if="{{records.length}}">
+    <view class="stat-top">
+      <view>
+        <view class="stat-num">{{stats.done}}<text class="stat-unit">/{{stats.total}}</text></view>
+        <view class="stat-label">近七天已完成的行动</view>
+      </view>
+      <view class="stat-right">
+        <view class="stat-percent">{{stats.percent}}%</view>
+        <view class="stat-label">累计投入 {{stats.minutes}} 分钟</view>
+      </view>
+    </view>
+    <view class="bar"><view class="bar-in" style="width:{{stats.percent}}%"></view></view>
+  </view>
+
+  <!-- 日期导航 -->
+  <view class="nav">
+    <view class="nav-btn" bindtap="onPrev">‹</view>
+    <view class="nav-range" bindtap="onToday">{{rangeLabel}}</view>
+    <view class="nav-btn" bindtap="onNext">›</view>
+  </view>
+  <view class="nav-sub">
+    <text wx:if="{{isCurrent}}">近七天</text>
+    <text wx:else bindtap="onToday" class="back-today">回到近七天</text>
+    <text class="fold-all" bindtap="onFoldAll">{{allOpen ? '全部折叠' : '全部展开'}}</text>
+  </view>
+
+  <!-- 需求筛选 -->
+  <scroll-view class="filters" scroll-x wx:if="{{records.length > 1}}">
+    <view class="filter {{filterId === '' ? 'on' : ''}}" data-id="" bindtap="onFilter">全部</view>
+    <view
+      class="filter {{filterId === item.id ? 'on' : ''}}"
+      wx:for="{{records}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onFilter"
+    >
+      <view class="fdot" style="background:{{item.color}}"></view>{{item.need}}
+    </view>
+  </scroll-view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!records.length}}">
+    <view class="empty-title">时间线是空的</view>
+    <view>去「需求」页说一句，或到「目标」页挑一个目标，行动会自动铺到这里</view>
+    <view class="btn ghost go-btn" bindtap="goInput">去输入需求</view>
+  </view>
+
+  <!-- 按天折叠的时间线 -->
+  <view class="day" wx:for="{{days}}" wx:key="date">
+    <view class="day-head" data-date="{{item.date}}" bindtap="onToggleDay">
+      <view class="day-left">
+        <view class="day-rel {{item.isToday ? 'today' : ''}}">{{item.rel}}</view>
+        <view class="day-md">{{item.md}}</view>
+      </view>
+      <view class="day-right">
+        <view class="day-count" wx:if="{{item.total}}">
+          <text class="done-n">{{item.done}}</text>/{{item.total}}
+        </view>
+        <view class="day-count muted" wx:else>无安排</view>
+        <view class="arrow {{item.open ? 'up' : ''}}">›</view>
+      </view>
+    </view>
+
+    <view class="day-body" wx:if="{{item.open}}">
+      <view class="day-empty muted" wx:if="{{!item.tasks.length}}">这一天没有安排</view>
+      <view
+        class="task {{t.done ? 'done' : ''}}"
+        wx:for="{{item.tasks}}"
+        wx:for-item="t"
+        wx:key="id"
+        data-rid="{{t.recordId}}"
+        data-tid="{{t.id}}"
+        bindtap="onToggleTask"
+      >
+        <view class="check" style="border-color:{{t.color}}">
+          <view class="check-in" wx:if="{{t.done}}" style="background:{{t.color}}"></view>
+        </view>
+        <view class="task-main">
+          <view class="task-title">{{t.title}}</view>
+          <view class="task-tip">{{t.tip}}</view>
+          <view class="task-meta">
+            <text class="phase" style="color:{{t.color}};background:{{t.color}}14">{{t.phase}}</text>
+            <text class="minutes">{{t.minutes}} 分钟</text>
+            <text class="from">{{t.goalName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 需求列表 -->
+  <view class="section" wx:if="{{records.length}}">
+    <view class="section-title">我的目标</view>
+    <view class="card rec" wx:for="{{records}}" wx:key="id">
+      <view class="rec-head">
+        <view class="dot" style="background:{{item.color}}"></view>
+        <view class="rec-need">{{item.need}}</view>
+        <view class="rec-del" data-id="{{item.id}}" catchtap="onRemove">删除</view>
+      </view>
+      <view class="rec-meta">
+        <text class="rec-opt">{{item.optionEmoji}} {{item.optionName}}</text>
+        <text class="muted" wx:if="{{item.hasProbability}}"> · 达成概率 {{item.probability}}%</text>
+        <text class="muted"> · {{item.done}}/{{item.total}} 项</text>
+      </view>
+      <view class="bar"><view class="bar-in" style="width:{{item.percent}}%;background:{{item.color}}"></view></view>
+      <view class="rec-note" wx:if="{{item.note}}">{{item.note}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,97 @@
+<view class="page">
+  <view class="notice">
+    改完立即生效，不用重新编译。开发者工具里 127.0.0.1 能用；<text class="link" bindtap="onFillLan">真机怎么填？</text>
+  </view>
+
+  <!-- aiservice -->
+  <view class="card">
+    <view class="sec-title">aiservice · Python 服务</view>
+    <view class="sec-sub">prompt 处理 / 时间线数据 / 用户数据</view>
+
+    <view class="field">
+      <view class="label">服务地址</view>
+      <input
+        class="inp"
+        value="{{aiBase}}"
+        data-key="aiBase"
+        bindinput="onInput"
+        placeholder="{{defaults.aiBase}}"
+        placeholder-class="ph"
+        confirm-type="done"
+        adjust-position="{{true}}"
+      />
+    </view>
+
+    <view class="row">
+      <view class="btn ghost" data-which="ai" bindtap="onTest">测试连接</view>
+      <view class="btn primary" bindtap="onSave">保存</view>
+    </view>
+
+    <view class="ping {{aiPing.ok ? 'ok' : 'bad'}}" wx:if="{{aiPing}}">
+      {{aiPing.ok ? '✓ ' : '✗ '}}{{aiPing.msg}}
+      <text class="use" wx:if="{{aiPing.ok}}" data-which="ai" bindtap="onUseIt">就用这个</text>
+    </view>
+  </view>
+
+  <!-- 登录服务 -->
+  <view class="card">
+    <view class="sec-title">登录服务 · Node</view>
+    <view class="sec-sub">OIDC 登录 + 云端备份恢复</view>
+
+    <view class="field">
+      <view class="label">服务地址</view>
+      <input
+        class="inp"
+        value="{{oidcBase}}"
+        data-key="oidcBase"
+        bindinput="onInput"
+        placeholder="{{defaults.oidcBase}}"
+        placeholder-class="ph"
+        confirm-type="done"
+        adjust-position="{{true}}"
+      />
+    </view>
+
+    <view class="row">
+      <view class="btn ghost" data-which="oidc" bindtap="onTest">测试连接</view>
+      <view class="btn primary" bindtap="onSave">保存</view>
+    </view>
+
+    <view class="ping {{oidcPing.ok ? 'ok' : 'bad'}}" wx:if="{{oidcPing}}">
+      {{oidcPing.ok ? '✓ ' : '✗ '}}{{oidcPing.msg}}
+      <text class="use" wx:if="{{oidcPing.ok}}" data-which="oidc" bindtap="onUseIt">就用这个</text>
+    </view>
+  </view>
+
+  <!-- 开关 -->
+  <view class="card">
+    <view class="switch-row">
+      <view class="sw-left">
+        <view class="sec-title">需求页的分析发给 aiservice</view>
+        <view class="sec-sub">每说一句都会 POST /api/prompt/analyze；连不上时自动回落到本地引擎</view>
+      </view>
+      <switch checked="{{useServer}}" bindchange="onToggleServer" color="#5B6CFF" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="switch-row">
+      <view class="sw-left">
+        <view class="sec-title">服务端再调真实大模型</view>
+        <view class="sec-sub">默认走本机 ollama（1337）；本地小模型约 20~30 秒，嫌慢就关掉走规则</view>
+      </view>
+      <switch checked="{{useLlm}}" bindchange="onToggleLlm" color="#5B6CFF" />
+    </view>
+  </view>
+
+  <view class="row between">
+    <view class="btn danger" bindtap="onReset">恢复默认地址</view>
+    <view class="saved" wx:if="{{saved && !dirty}}">✓ 已保存</view>
+  </view>
+
+  <view class="tip">
+    两个服务各管一段，互不依赖：
+    aiservice 负责数据与 prompt，登录服务只负责 OIDC 和备份。
+    只用到其中一个时，另一个连不上也不影响使用。
+  </view>
+</view>

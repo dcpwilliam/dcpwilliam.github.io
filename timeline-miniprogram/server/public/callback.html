@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>登录回调</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    background: #f5f6fa; color: #1b1f33; padding: 24px;
+  }
+  .box { width: 100%; max-width: 420px; background: #fff; border-radius: 18px; padding: 28px 24px; text-align: center; box-shadow: 0 10px 30px rgba(27,31,51,.08); }
+  .title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .desc { font-size: 13px; color: #8a91a6; line-height: 1.8; }
+  .spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #eef0ff; border-top-color: #5b6cff; animation: spin .8s linear infinite; margin: 18px auto; }
+  @keyframes spin { to { transform: rotate(360deg) } }
+  .code {
+    margin-top: 16px; padding: 12px; background: #f7f8fc; border-radius: 10px;
+    font-size: 12px; color: #4a5168; word-break: break-all; text-align: left; line-height: 1.6;
+  }
+  .btn {
+    margin-top: 16px; height: 44px; border-radius: 22px; background: linear-gradient(135deg,#6f7dff,#5b6cff);
+    color: #fff; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .btn.ghost { background: #fff; color: #5b6cff; border: 1px solid #5b6cff; }
+  .err { color: #e64980; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div id="loading">
+    <div class="title">正在回到小程序…</div>
+    <div class="spinner"></div>
+    <div class="desc">如果长时间停在这里，说明当前域名未配置为小程序的业务域名，<br />可以手动复制下面的 code。</div>
+  </div>
+  <div id="fallback" style="display:none">
+    <div class="title" id="fb-title">登录回调</div>
+    <div class="desc" id="fb-desc">复制下面的 code，回到小程序粘贴即可完成登录。</div>
+    <div class="code" id="fb-code"></div>
+    <div class="btn" id="copy-btn">复制 code</div>
+  </div>
+</div>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script>
+  var q = new URLSearchParams(location.search)
+  var code = q.get('code')
+  var state = q.get('state')
+  var error = q.get('error')
+  var isLogout = q.get('logout') === '1'
+
+  function backToMini(url) {
+    try {
+      if (window.wx && wx.miniProgram && wx.miniProgram.redirectTo) {
+        wx.miniProgram.redirectTo({ url: url })
+        return true
+      }
+      if (window.wx && wx.miniProgram && wx.miniProgram.navigateTo) {
+        wx.miniProgram.navigateTo({ url: url })
+        return true
+      }
+    } catch (e) {}
+    return false
+  }
+
+  function showFallback(title, desc, text) {
+    document.getElementById('loading').style.display = 'none'
+    var fb = document.getElementById('fallback')
+    fb.style.display = 'block'
+    document.getElementById('fb-title').textContent = title
+    document.getElementById('fb-desc').textContent = desc
+    document.getElementById('fb-code').textContent = text
+  }
+
+  if (isLogout) {
+    var ok = backToMini('/pages/auth/index?logout=1')
+    if (!ok) showFallback('已登出', '可以关闭本页，回到小程序继续。', 'logout=1')
+  } else if (error) {
+    var okErr = backToMini('/pages/auth/index?error=' + encodeURIComponent(error))
+    if (!okErr) showFallback('登录失败', '认证服务返回了错误：' + error, error)
+  } else if (code) {
+    var target = '/pages/auth/index?code=' + encodeURIComponent(code) + (state ? '&state=' + encodeURIComponent(state) : '')
+    var okCode = backToMini(target)
+    if (!okCode) {
+      showFallback('拿到授权码', '复制下面的 code，回到小程序粘贴即可完成登录。', code)
+      document.getElementById('copy-btn').onclick = function () {
+        var el = document.getElementById('fb-code')
+        var range = document.createRange()
+        range.selectNodeContents(el)
+        var sel = window.getSelection()
+        sel.removeAllRanges()
+        sel.addRange(range)
+        try { document.execCommand('copy') } catch (e) {}
+        document.getElementById('copy-btn').textContent = '已复制'
+      }
+    }
+  } else {
+    showFallback('回调参数不完整', '这个页面应由认证服务跳转而来。', location.search || '(无参数)')
+  }
+</script>
+</body>
+</html>

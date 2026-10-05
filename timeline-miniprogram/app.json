@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/input/index",
+    "pages/goal/index",
+    "pages/choice/index",
+    "pages/timeline/index",
+    "pages/settings/index",
+    "pages/auth/index",
+    "pages/auth/web"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "Timeline",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F6FA"
+  },
+  "tabBar": {
+    "color": "#A6AEBC",
+    "selectedColor": "#5B6CFF",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/input/index",
+        "text": "需求",
+        "iconPath": "images/tab/input.png",
+        "selectedIconPath": "images/tab/input_on.png"
+      },
+      {
+        "pagePath": "pages/goal/index",
+        "text": "目标",
+        "iconPath": "images/tab/goal.png",
+        "selectedIconPath": "images/tab/goal_on.png"
+      },
+      {
+        "pagePath": "pages/choice/index",
+        "text": "选择",
+        "iconPath": "images/tab/choice.png",
+        "selectedIconPath": "images/tab/choice_on.png"
+      },
+      {
+        "pagePath": "pages/timeline/index",
+        "text": "时间线",
+        "iconPath": "images/tab/timeline.png",
+        "selectedIconPath": "images/tab/timeline_on.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
